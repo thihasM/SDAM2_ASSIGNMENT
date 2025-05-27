@@ -23,5 +23,10 @@ namespace LOGIN_SDAM_ASSIGNMENT
             handiyen.Show();
             this.Hide();
         }
+
+        private void Loginform_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
