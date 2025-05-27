@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace LOGIN_SDAM_ASSIGNMENT
 {
-    public partial class Loginform: Form
+    public partial class Loginform : Form
     {
         public Loginform()
         {
             InitializeComponent();
+        }
+
+        private void login_bck_btn_Click(object sender, EventArgs e)
+        {
+            Handiyen handiyen = new Handiyen();
+            handiyen.Show();
+            this.Hide();
         }
     }
 }
