@@ -26,5 +26,12 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
 
         }
+
+        private void signup_res_bck_btn_Click(object sender, EventArgs e)
+        {
+            Signupselector signupselector = new Signupselector();
+            signupselector.Show();
+            this.Close();
+        }
     }
 }
