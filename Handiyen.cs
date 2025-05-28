@@ -1,4 +1,4 @@
-namespace LOGIN_SDAM_ASSIGNMENT
+﻿namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class Handiyen : Form
     {
@@ -19,6 +19,23 @@ namespace LOGIN_SDAM_ASSIGNMENT
             Loginform loginForm = new Loginform();
             loginForm.Show();
             this.Hide();
+        }
+
+        private void testConnectionBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DatabaseHelper db = new DatabaseHelper();
+                using (MySql.Data.MySqlClient.MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+                    MessageBox.Show("✅ Connection successful!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Connection failed:\n" + ex.Message);
+            }
         }
     }
 }

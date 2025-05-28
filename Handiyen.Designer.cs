@@ -31,6 +31,7 @@
             Log_in_btn = new Button();
             Sign_up_btn = new Button();
             label1 = new Label();
+            testConnectionBtn = new Button();
             SuspendLayout();
             // 
             // Log_in_btn
@@ -69,12 +70,23 @@
             label1.TabIndex = 4;
             label1.Text = "Handiyen";
             // 
+            // testConnectionBtn
+            // 
+            testConnectionBtn.Location = new Point(476, 374);
+            testConnectionBtn.Name = "testConnectionBtn";
+            testConnectionBtn.Size = new Size(94, 29);
+            testConnectionBtn.TabIndex = 5;
+            testConnectionBtn.Text = "test con";
+            testConnectionBtn.UseVisualStyleBackColor = true;
+            testConnectionBtn.Click += testConnectionBtn_Click;
+            // 
             // Handiyen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonShadow;
             ClientSize = new Size(609, 435);
+            Controls.Add(testConnectionBtn);
             Controls.Add(label1);
             Controls.Add(Sign_up_btn);
             Controls.Add(Log_in_btn);
@@ -90,5 +102,6 @@
         private Button Log_in_btn;
         private Button Sign_up_btn;
         private Label label1;
+        private Button testConnectionBtn;
     }
 }
