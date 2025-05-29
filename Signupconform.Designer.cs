@@ -43,6 +43,8 @@
             label1 = new Label();
             sign_con_bday_txtb = new DateTimePicker();
             signup_con_btn = new Button();
+            sign_con_uname_txtb = new TextBox();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label2
@@ -74,7 +76,7 @@
             sign_con_conpass_txtb.BackColor = SystemColors.ScrollBar;
             sign_con_conpass_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_con_conpass_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            sign_con_conpass_txtb.Location = new Point(427, 311);
+            sign_con_conpass_txtb.Location = new Point(427, 335);
             sign_con_conpass_txtb.Name = "sign_con_conpass_txtb";
             sign_con_conpass_txtb.PlaceholderText = "Confirm Password";
             sign_con_conpass_txtb.Size = new Size(250, 27);
@@ -85,7 +87,7 @@
             sign_con_email_txtb.BackColor = SystemColors.ScrollBar;
             sign_con_email_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_con_email_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            sign_con_email_txtb.Location = new Point(427, 189);
+            sign_con_email_txtb.Location = new Point(427, 213);
             sign_con_email_txtb.Name = "sign_con_email_txtb";
             sign_con_email_txtb.PlaceholderText = "Enter Your Email";
             sign_con_email_txtb.Size = new Size(250, 27);
@@ -95,7 +97,7 @@
             // 
             sign_con_pnum_txtb.BackColor = SystemColors.ScrollBar;
             sign_con_pnum_txtb.BorderStyle = BorderStyle.FixedSingle;
-            sign_con_pnum_txtb.Location = new Point(427, 231);
+            sign_con_pnum_txtb.Location = new Point(427, 255);
             sign_con_pnum_txtb.Name = "sign_con_pnum_txtb";
             sign_con_pnum_txtb.PlaceholderText = "+94 XXXXXXXXX";
             sign_con_pnum_txtb.Size = new Size(250, 27);
@@ -106,7 +108,7 @@
             sign_con_pass_txtb.BackColor = SystemColors.ScrollBar;
             sign_con_pass_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_con_pass_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            sign_con_pass_txtb.Location = new Point(427, 271);
+            sign_con_pass_txtb.Location = new Point(427, 295);
             sign_con_pass_txtb.Name = "sign_con_pass_txtb";
             sign_con_pass_txtb.PlaceholderText = "Password";
             sign_con_pass_txtb.Size = new Size(250, 27);
@@ -117,9 +119,9 @@
             sign_con_name_txtb.BackColor = SystemColors.ScrollBar;
             sign_con_name_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_con_name_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            sign_con_name_txtb.Location = new Point(427, 106);
+            sign_con_name_txtb.Location = new Point(427, 103);
             sign_con_name_txtb.Name = "sign_con_name_txtb";
-            sign_con_name_txtb.PlaceholderText = "Enter Resturant Name";
+            sign_con_name_txtb.PlaceholderText = "Enter Your Name ...";
             sign_con_name_txtb.Size = new Size(250, 27);
             sign_con_name_txtb.TabIndex = 22;
             // 
@@ -127,7 +129,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(214, 311);
+            label7.Location = new Point(214, 335);
             label7.Name = "label7";
             label7.Size = new Size(181, 23);
             label7.TabIndex = 21;
@@ -137,7 +139,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(214, 271);
+            label6.Location = new Point(214, 295);
             label6.Name = "label6";
             label6.Size = new Size(107, 23);
             label6.TabIndex = 20;
@@ -147,7 +149,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(214, 231);
+            label5.Location = new Point(214, 255);
             label5.Name = "label5";
             label5.Size = new Size(151, 23);
             label5.TabIndex = 19;
@@ -157,7 +159,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(214, 189);
+            label4.Location = new Point(214, 213);
             label4.Name = "label4";
             label4.Size = new Size(75, 23);
             label4.TabIndex = 18;
@@ -167,7 +169,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(214, 151);
+            label3.Location = new Point(214, 175);
             label3.Name = "label3";
             label3.Size = new Size(138, 23);
             label3.TabIndex = 17;
@@ -177,7 +179,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(214, 109);
+            label1.Location = new Point(214, 106);
             label1.Name = "label1";
             label1.Size = new Size(76, 23);
             label1.TabIndex = 16;
@@ -191,7 +193,7 @@
             sign_con_bday_txtb.CalendarTitleBackColor = SystemColors.Info;
             sign_con_bday_txtb.CalendarTitleForeColor = SystemColors.Info;
             sign_con_bday_txtb.CalendarTrailingForeColor = SystemColors.ScrollBar;
-            sign_con_bday_txtb.Location = new Point(427, 148);
+            sign_con_bday_txtb.Location = new Point(427, 172);
             sign_con_bday_txtb.MaxDate = new DateTime(2008, 12, 31, 0, 0, 0, 0);
             sign_con_bday_txtb.MinDate = new DateTime(1953, 1, 1, 0, 0, 0, 0);
             sign_con_bday_txtb.Name = "sign_con_bday_txtb";
@@ -213,12 +215,35 @@
             signup_con_btn.UseVisualStyleBackColor = false;
             signup_con_btn.Click += signup_con_btn_Click;
             // 
+            // sign_con_uname_txtb
+            // 
+            sign_con_uname_txtb.BackColor = SystemColors.ScrollBar;
+            sign_con_uname_txtb.BorderStyle = BorderStyle.FixedSingle;
+            sign_con_uname_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            sign_con_uname_txtb.Location = new Point(427, 139);
+            sign_con_uname_txtb.Name = "sign_con_uname_txtb";
+            sign_con_uname_txtb.PlaceholderText = "Enter your user Name ...";
+            sign_con_uname_txtb.Size = new Size(250, 27);
+            sign_con_uname_txtb.TabIndex = 34;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(214, 143);
+            label8.Name = "label8";
+            label8.Size = new Size(121, 23);
+            label8.TabIndex = 33;
+            label8.Text = "User Name : ";
+            // 
             // Signupconform
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonShadow;
             ClientSize = new Size(800, 450);
+            Controls.Add(sign_con_uname_txtb);
+            Controls.Add(label8);
             Controls.Add(signup_con_btn);
             Controls.Add(sign_con_bday_txtb);
             Controls.Add(label2);
@@ -257,6 +282,8 @@
         private Label label3;
         private Label label1;
         private DateTimePicker sign_con_bday_txtb;
+        private TextBox sign_con_uname_txtb;
+        private Label label8;
         //private Button signup_con_btn;
     }
 }
