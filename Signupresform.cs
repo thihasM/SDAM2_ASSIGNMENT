@@ -105,7 +105,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
                     long userId = cmdUser.LastInsertedId;
 
-                    // pushing data into restaurants table in databae:
+                    // pushing data into restaurants table in database:
                     string insertRestaurantQuery = @"
             INSERT INTO restaurants (user_id, name, address, email, phone, username)
             VALUES (@user_id, @name, @address, @email, @phone, @username)";
