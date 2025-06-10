@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -33,5 +35,104 @@ namespace LOGIN_SDAM_ASSIGNMENT
             signupselector.Show();
             this.Close();
         }
+
+        private void signup_res_btn_Click(object sender, EventArgs e)
+        {
+            //input collection:
+            string name = sign_res_name_txtb.Text.Trim();
+            string address = sign_res_add_txtb.Text.Trim();
+            string username = sign_res_uname_txtb.Text.Trim();
+            string email = sign_res_email_txtb.Text.Trim();
+            string phone = sign_res_pnum_txtb.Text.Trim();
+            string password = sign_res_pass_txtb.Text.Trim();
+            string confirmPassword = sign_res_conpass_txtb.Text.Trim();
+            string accountType = "Restaurant";
+
+            // Regex patterns:
+            bool nameValid = Regex.IsMatch(name, @"^[a-zA-Z ]+$");
+            bool usernameValid = Regex.IsMatch(username, @"^[a-zA-Z0-9]+$");
+            bool phoneValid = Regex.IsMatch(phone, @"^\d{10}$");
+
+            //input validators:
+
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(address) || string.IsNullOrWhiteSpace(email) ||
+                string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(password) ||
+                string.IsNullOrWhiteSpace(confirmPassword) || string.IsNullOrWhiteSpace(username))
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+            if (!nameValid)
+            {
+                MessageBox.Show("Name must contain only letters and spaces.");
+                return;
+            }
+            if (!usernameValid)
+            {
+                MessageBox.Show("Username must contain only letters and numbers.");
+                return;
+            }
+            if (!phoneValid)
+            {
+                MessageBox.Show("Phone number must be exactly 10 digits.");
+                return;
+            }
+            if (password != confirmPassword)
+            {
+                MessageBox.Show("Passwords do not match.");
+                return;
+            }
+
+            DatabaseHelper db = new DatabaseHelper();
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                MySqlTransaction transaction = conn.BeginTransaction();
+
+                try
+                {
+                    // pushing data into users table in database:
+                    string insertUserQuery = @"
+            INSERT INTO users (username, password, name, account_type)
+            VALUES (@username, @password, @name, @account_type)";
+
+                    MySqlCommand cmdUser = new MySqlCommand(insertUserQuery, conn, transaction);
+                    cmdUser.Parameters.AddWithValue("@username", username);
+                    cmdUser.Parameters.AddWithValue("@password", password);
+                    cmdUser.Parameters.AddWithValue("@name", name);
+                    cmdUser.Parameters.AddWithValue("@account_type", accountType);
+                    cmdUser.ExecuteNonQuery();
+
+                    long userId = cmdUser.LastInsertedId;
+
+                    // pushing data into restaurants table in database:
+                    string insertRestaurantQuery = @"
+            INSERT INTO restaurants (user_id, name, address, email, phone, username)
+            VALUES (@user_id, @name, @address, @email, @phone, @username)";
+
+                    MySqlCommand cmdRest = new MySqlCommand(insertRestaurantQuery, conn, transaction);
+                    cmdRest.Parameters.AddWithValue("@user_id", userId);
+                    cmdRest.Parameters.AddWithValue("@name", name);
+                    cmdRest.Parameters.AddWithValue("@address", address);
+                    cmdRest.Parameters.AddWithValue("@email", email);
+                    cmdRest.Parameters.AddWithValue("@phone", phone);
+                    cmdRest.Parameters.AddWithValue("@username", username);
+                    cmdRest.ExecuteNonQuery();
+
+                    transaction.Commit();
+
+                    MessageBox.Show("Restaurant registration successful!");
+                    Signupselector signupselector = new Signupselector();
+                    signupselector.Show();
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
     }
 }
+

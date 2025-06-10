@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace LOGIN_SDAM_ASSIGNMENT
@@ -31,7 +32,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void signup_con_btn_Click(object sender, EventArgs e)
         {
-            //input collection
+            ///input collection:
             string name = sign_con_name_txtb.Text.Trim();
             string username = sign_con_uname_txtb.Text.Trim();
             string dob = sign_con_bday_txtb.Value.ToString("yyyy-MM-dd");
@@ -39,13 +40,14 @@ namespace LOGIN_SDAM_ASSIGNMENT
             string phone = sign_con_pnum_txtb.Text.Trim();
             string password = sign_con_pass_txtb.Text.Trim();
             string confirmPassword = sign_con_conpass_txtb.Text.Trim();
+            string accountType = "Customer";
 
-            //regex patterns
+            // Regex patterns:
             bool nameValid = Regex.IsMatch(name, @"^[a-zA-Z ]+$");
             bool usernameValid = Regex.IsMatch(username, @"^[a-zA-Z0-9]+$");
             bool phoneValid = Regex.IsMatch(phone, @"^\d{10}$");
 
-            //validators
+            //input validators:
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(dob) || string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(password) ||
                 string.IsNullOrWhiteSpace(confirmPassword) || string.IsNullOrWhiteSpace(username))
@@ -79,24 +81,43 @@ namespace LOGIN_SDAM_ASSIGNMENT
             using (MySqlConnection conn = db.GetConnection())
             {
                 conn.Open();
+                MySqlTransaction transaction = conn.BeginTransaction();
+
+                // pushing data into users table in database:
                 string insertUserQuery = @"
                     INSERT INTO users 
-                        (username, password, name, dob, email, phone, account_type) 
+                        (username, password, name, dob, phone, account_type) 
                     VALUES 
-                        (@username, @password, @name, @dob, @email, @phone, 'Customer');";
+                        (@username, @password, @name, @dob, @phone, @account_type);";
 
-                MySqlCommand cmd = new MySqlCommand(insertUserQuery, conn);
+                MySqlCommand cmd = new MySqlCommand(insertUserQuery, conn, transaction);
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password", password);
                 cmd.Parameters.AddWithValue("@name", name);
-                cmd.Parameters.AddWithValue("@dob", dob);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@phone", phone);
+                cmd.Parameters.AddWithValue("@account_type", accountType); // make sure this is a string
                 cmd.ExecuteNonQuery();
 
                 long userId = cmd.LastInsertedId;
 
-                
+                // pushing data into consumers table in database:
+                string insertConsumerQuery = @"
+                    INSERT INTO consumers 
+                        (user_id, name, email, phone) 
+                    VALUES 
+                        (@user_id, @name, @email, @phone);";
+
+                MySqlCommand cmd2 = new MySqlCommand(insertConsumerQuery, conn, transaction);
+                cmd2.Parameters.AddWithValue("@user_id", userId);
+                cmd2.Parameters.AddWithValue("@username", username);
+                cmd2.Parameters.AddWithValue("@name", name);
+                cmd2.Parameters.AddWithValue("@email", email);
+                cmd2.Parameters.AddWithValue("@phone", phone);
+                cmd2.Parameters.AddWithValue("@dob", dob);
+                cmd2.ExecuteNonQuery();
+
+                transaction.Commit();
+                MessageBox.Show("Signup successful! enjoy shoping.");
+                conn.Close();
             }
 
         }
