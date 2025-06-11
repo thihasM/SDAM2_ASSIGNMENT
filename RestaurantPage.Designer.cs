@@ -1,6 +1,6 @@
 ﻿namespace LOGIN_SDAM_ASSIGNMENT
 {
-    partial class Customerinterface
+    partial class RestaurantPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,46 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            customer_intf_lb = new ListBox();
-            label2 = new Label();
+            lblName = new Label();
+            lblAddress = new Label();
             SuspendLayout();
             // 
-            // customer_intf_lb
+            // lblName
             // 
-            customer_intf_lb.FormattingEnabled = true;
-            customer_intf_lb.Location = new Point(70, 138);
-            customer_intf_lb.Name = "customer_intf_lb";
-            customer_intf_lb.Size = new Size(661, 264);
-            customer_intf_lb.TabIndex = 0;
-            customer_intf_lb.SelectedIndexChanged += customer_intf_lb_SelectedIndexChanged;
+            lblName.AutoSize = true;
+            lblName.Location = new Point(315, 48);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(0, 20);
+            lblName.TabIndex = 0;
             // 
-            // label2
+            // lblAddress
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(317, 42);
-            label2.Name = "label2";
-            label2.Size = new Size(157, 38);
-            label2.TabIndex = 31;
-            label2.Text = "Handiyen";
+            lblAddress.AutoSize = true;
+            lblAddress.Location = new Point(315, 124);
+            lblAddress.Name = "lblAddress";
+            lblAddress.Size = new Size(0, 20);
+            lblAddress.TabIndex = 1;
             // 
-            // Customerinterface
+            // RestaurantPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label2);
-            Controls.Add(customer_intf_lb);
-            Name = "Customerinterface";
-            Text = "Customerinterface";
-            Load += Customerinterface_Load;
+            Controls.Add(lblAddress);
+            Controls.Add(lblName);
+            Name = "RestaurantPage";
+            Text = "RestaurantPage";
+            Load += RestaurantPage_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ListBox customer_intf_lb;
-        private Label label2;
+        private Label lblName;
+        private Label lblAddress;
     }
 }
