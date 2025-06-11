@@ -32,6 +32,8 @@
             lblAddress = new Label();
             menu_items = new ListBox();
             gobck_btn = new Button();
+            plc_odr_btn = new Button();
+            profile_btn = new Button();
             SuspendLayout();
             // 
             // lblName
@@ -62,7 +64,7 @@
             // 
             // gobck_btn
             // 
-            gobck_btn.Location = new Point(652, 413);
+            gobck_btn.Location = new Point(12, 12);
             gobck_btn.Name = "gobck_btn";
             gobck_btn.Size = new Size(94, 29);
             gobck_btn.TabIndex = 3;
@@ -70,11 +72,31 @@
             gobck_btn.UseVisualStyleBackColor = true;
             gobck_btn.Click += gobck_btn_Click;
             // 
+            // plc_odr_btn
+            // 
+            plc_odr_btn.Location = new Point(148, 422);
+            plc_odr_btn.Name = "plc_odr_btn";
+            plc_odr_btn.Size = new Size(94, 29);
+            plc_odr_btn.TabIndex = 4;
+            plc_odr_btn.Text = "Place Order";
+            plc_odr_btn.UseVisualStyleBackColor = true;
+            // 
+            // profile_btn
+            // 
+            profile_btn.Location = new Point(485, 422);
+            profile_btn.Name = "profile_btn";
+            profile_btn.Size = new Size(94, 29);
+            profile_btn.TabIndex = 5;
+            profile_btn.Text = "Profile";
+            profile_btn.UseVisualStyleBackColor = true;
+            // 
             // RestaurantPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 463);
+            Controls.Add(profile_btn);
+            Controls.Add(plc_odr_btn);
             Controls.Add(gobck_btn);
             Controls.Add(menu_items);
             Controls.Add(lblAddress);
@@ -92,5 +114,7 @@
         private Label lblAddress;
         private ListBox menu_items;
         private Button gobck_btn;
+        private Button plc_odr_btn;
+        private Button profile_btn;
     }
 }
