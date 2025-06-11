@@ -24,5 +24,12 @@ namespace LOGIN_SDAM_ASSIGNMENT
             lblName.Text = _restaurant.Name;
             lblAddress.Text = _restaurant.Address;
         }
+
+        private void gobck_btn_Click(object sender, EventArgs e)
+        {
+            Customerinterface customerInterface = new Customerinterface();
+            customerInterface.Show();
+            this.Close();
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class Customerinterface : Form
     {
+        private bool isListBoxLoaded = false;
         public Customerinterface()
         {
             InitializeComponent();
@@ -20,9 +21,19 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void Customerinterface_Load(object sender, EventArgs e)
         {
-            customer_intf_lb.DataSource = GetAllRestaurants();
-            customer_intf_lb.DisplayMember = "Name";
-            // Removed: customer_intf_lb = true;
+            List<Restaurant> restaurants = GetAllRestaurants();
+
+            if (restaurants.Count == 0)
+            {
+                MessageBox.Show("There are no restaurants currently available.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                customer_intf_lb.DataSource = null;
+            }
+            else
+            {
+                customer_intf_lb.DataSource = restaurants;
+                customer_intf_lb.DisplayMember = "Name";
+                isListBoxLoaded = true;
+            }
         }
         private List<Restaurant> GetAllRestaurants()
         {
@@ -54,9 +65,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void customer_intf_lb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!isListBoxLoaded) return;
-
-            if (customer_intf_lb.SelectedItem is Restaurant selectedRestaurant)
+            if (isListBoxLoaded && customer_intf_lb.SelectedItem is Restaurant selectedRestaurant)
             {
                 RestaurantPage page = new RestaurantPage(selectedRestaurant);
                 page.Show();
