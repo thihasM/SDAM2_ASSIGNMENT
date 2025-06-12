@@ -62,7 +62,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(159, 121);
+            label3.Location = new Point(159, 134);
             label3.Name = "label3";
             label3.Size = new Size(108, 20);
             label3.TabIndex = 2;
@@ -71,7 +71,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(159, 194);
+            label4.Location = new Point(159, 215);
             label4.Name = "label4";
             label4.Size = new Size(46, 20);
             label4.TabIndex = 3;
@@ -80,7 +80,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(159, 265);
+            label5.Location = new Point(159, 295);
             label5.Name = "label5";
             label5.Size = new Size(62, 20);
             label5.TabIndex = 4;
@@ -95,28 +95,28 @@
             // 
             // user_phone__number_edit_textbox
             // 
-            user_phone__number_edit_textbox.Location = new Point(159, 144);
+            user_phone__number_edit_textbox.Location = new Point(159, 157);
             user_phone__number_edit_textbox.Name = "user_phone__number_edit_textbox";
             user_phone__number_edit_textbox.Size = new Size(420, 27);
             user_phone__number_edit_textbox.TabIndex = 7;
             // 
             // user_email_edit_textbox
             // 
-            user_email_edit_textbox.Location = new Point(159, 217);
+            user_email_edit_textbox.Location = new Point(159, 238);
             user_email_edit_textbox.Name = "user_email_edit_textbox";
             user_email_edit_textbox.Size = new Size(420, 27);
             user_email_edit_textbox.TabIndex = 8;
             // 
             // user_address_edit_textbox
             // 
-            user_address_edit_textbox.Location = new Point(159, 288);
+            user_address_edit_textbox.Location = new Point(159, 318);
             user_address_edit_textbox.Name = "user_address_edit_textbox";
             user_address_edit_textbox.Size = new Size(420, 27);
             user_address_edit_textbox.TabIndex = 9;
             // 
             // user_confirm_edit_btn
             // 
-            user_confirm_edit_btn.Location = new Point(485, 369);
+            user_confirm_edit_btn.Location = new Point(485, 374);
             user_confirm_edit_btn.Name = "user_confirm_edit_btn";
             user_confirm_edit_btn.Size = new Size(94, 29);
             user_confirm_edit_btn.TabIndex = 11;
@@ -125,7 +125,7 @@
             // 
             // user_back_btn
             // 
-            user_back_btn.Location = new Point(377, 369);
+            user_back_btn.Location = new Point(377, 374);
             user_back_btn.Name = "user_back_btn";
             user_back_btn.Size = new Size(94, 29);
             user_back_btn.TabIndex = 12;

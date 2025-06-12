@@ -10,11 +10,36 @@ using System.Windows.Forms;
 
 namespace LOGIN_SDAM_ASSIGNMENT
 {
-    public partial class EditProfilRes: Form
+    public partial class EditProfilRes : Form
     {
         public EditProfilRes()
         {
             InitializeComponent();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditProfilRes_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
