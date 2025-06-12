@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace LOGIN_SDAM_ASSIGNMENT
 {
-    public partial class trackoder: Form
+    public partial class trackoder : Form
     {
         public trackoder()
         {
             InitializeComponent();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
