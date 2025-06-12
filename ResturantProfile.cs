@@ -26,5 +26,12 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
 
         }
+
+        private void res_edit_food_menu_btn_Click(object sender, EventArgs e)
+        {
+            menueditpage menuEditPage = new menueditpage();
+            menuEditPage.Show();
+            this.Close();
+        }
     }
 }

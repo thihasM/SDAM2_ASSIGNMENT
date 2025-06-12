@@ -33,7 +33,7 @@
             menu_items = new ListBox();
             gobck_btn = new Button();
             plc_odr_btn = new Button();
-            profile_btn = new Button();
+            cus_profile_btn = new Button();
             SuspendLayout();
             // 
             // lblName
@@ -57,10 +57,11 @@
             // menu_items
             // 
             menu_items.FormattingEnabled = true;
-            menu_items.Location = new Point(148, 134);
+            menu_items.Location = new Point(174, 178);
             menu_items.Name = "menu_items";
-            menu_items.Size = new Size(450, 264);
+            menu_items.Size = new Size(380, 204);
             menu_items.TabIndex = 2;
+            menu_items.SelectedIndexChanged += menu_items_SelectedIndexChanged;
             // 
             // gobck_btn
             // 
@@ -74,28 +75,30 @@
             // 
             // plc_odr_btn
             // 
-            plc_odr_btn.Location = new Point(148, 422);
+            plc_odr_btn.Location = new Point(154, 404);
             plc_odr_btn.Name = "plc_odr_btn";
             plc_odr_btn.Size = new Size(94, 29);
             plc_odr_btn.TabIndex = 4;
             plc_odr_btn.Text = "Place Order";
             plc_odr_btn.UseVisualStyleBackColor = true;
+            plc_odr_btn.Click += plc_odr_btn_Click;
             // 
-            // profile_btn
+            // cus_profile_btn
             // 
-            profile_btn.Location = new Point(485, 422);
-            profile_btn.Name = "profile_btn";
-            profile_btn.Size = new Size(94, 29);
-            profile_btn.TabIndex = 5;
-            profile_btn.Text = "Profile";
-            profile_btn.UseVisualStyleBackColor = true;
+            cus_profile_btn.Location = new Point(472, 404);
+            cus_profile_btn.Name = "cus_profile_btn";
+            cus_profile_btn.Size = new Size(94, 29);
+            cus_profile_btn.TabIndex = 5;
+            cus_profile_btn.Text = "Profile";
+            cus_profile_btn.UseVisualStyleBackColor = true;
+            cus_profile_btn.Click += cus_profile_btn_Click;
             // 
             // RestaurantPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 463);
-            Controls.Add(profile_btn);
+            Controls.Add(cus_profile_btn);
             Controls.Add(plc_odr_btn);
             Controls.Add(gobck_btn);
             Controls.Add(menu_items);
@@ -115,6 +118,6 @@
         private ListBox menu_items;
         private Button gobck_btn;
         private Button plc_odr_btn;
-        private Button profile_btn;
+        private Button cus_profile_btn;
     }
 }

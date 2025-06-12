@@ -32,7 +32,7 @@
             res_review_comments_btn = new Button();
             res_log_out_btn = new Button();
             res_delete_account_btn = new Button();
-            res_edit_food_menu = new Button();
+            res_edit_food_menu_btn = new Button();
             SuspendLayout();
             // 
             // res_edit_btn
@@ -72,21 +72,22 @@
             res_delete_account_btn.Text = "Delete Account";
             res_delete_account_btn.UseVisualStyleBackColor = true;
             // 
-            // res_edit_food_menu
+            // res_edit_food_menu_btn
             // 
-            res_edit_food_menu.Location = new Point(296, 208);
-            res_edit_food_menu.Name = "res_edit_food_menu";
-            res_edit_food_menu.Size = new Size(152, 55);
-            res_edit_food_menu.TabIndex = 4;
-            res_edit_food_menu.Text = "Edit Food Menu";
-            res_edit_food_menu.UseVisualStyleBackColor = true;
+            res_edit_food_menu_btn.Location = new Point(296, 208);
+            res_edit_food_menu_btn.Name = "res_edit_food_menu_btn";
+            res_edit_food_menu_btn.Size = new Size(152, 55);
+            res_edit_food_menu_btn.TabIndex = 4;
+            res_edit_food_menu_btn.Text = "Edit Food Menu";
+            res_edit_food_menu_btn.UseVisualStyleBackColor = true;
+            res_edit_food_menu_btn.Click += res_edit_food_menu_btn_Click;
             // 
             // ResturantProfile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(res_edit_food_menu);
+            Controls.Add(res_edit_food_menu_btn);
             Controls.Add(res_delete_account_btn);
             Controls.Add(res_log_out_btn);
             Controls.Add(res_review_comments_btn);
@@ -103,6 +104,6 @@
         private Button res_review_comments_btn;
         private Button res_log_out_btn;
         private Button res_delete_account_btn;
-        private Button res_edit_food_menu;
+        private Button res_edit_food_menu_btn;
     }
 }

@@ -72,6 +72,7 @@
             edit_menu_btn.TabIndex = 6;
             edit_menu_btn.Text = "Edit Menu";
             edit_menu_btn.UseVisualStyleBackColor = true;
+            edit_menu_btn.Click += edit_menu_btn_Click;
             // 
             // label1
             // 

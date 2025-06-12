@@ -19,7 +19,9 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            ResturantProfile profile = new ResturantProfile();
+            profile.Show();
+            this.Close();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -40,6 +42,11 @@ namespace LOGIN_SDAM_ASSIGNMENT
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void edit_menu_btn_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

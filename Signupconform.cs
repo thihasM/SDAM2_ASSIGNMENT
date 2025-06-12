@@ -86,9 +86,9 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 // pushing data into users table in database:
                 string insertUserQuery = @"
                     INSERT INTO users 
-                        (username, password, name, dob, phone, account_type) 
+                        (username, password, name, account_type) 
                     VALUES 
-                        (@username, @password, @name, @dob, @phone, @account_type);";
+                        (@username, @password, @name, @account_type);";
 
                 MySqlCommand cmd = new MySqlCommand(insertUserQuery, conn, transaction);
                 cmd.Parameters.AddWithValue("@username", username);

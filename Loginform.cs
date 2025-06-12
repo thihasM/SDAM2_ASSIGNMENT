@@ -65,7 +65,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
                                 restaurantInterface.Show();
                             }
 
-                            this.Hide(); // Don't close or app might exit
+                            this.Hide(); 
                         }
                         else
                         {

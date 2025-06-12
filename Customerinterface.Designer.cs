@@ -38,9 +38,9 @@
             // customer_intf_lb
             // 
             customer_intf_lb.FormattingEnabled = true;
-            customer_intf_lb.Location = new Point(70, 138);
+            customer_intf_lb.Location = new Point(204, 159);
             customer_intf_lb.Name = "customer_intf_lb";
-            customer_intf_lb.Size = new Size(661, 264);
+            customer_intf_lb.Size = new Size(418, 244);
             customer_intf_lb.TabIndex = 0;
             customer_intf_lb.SelectedIndexChanged += customer_intf_lb_SelectedIndexChanged;
             // 
@@ -57,15 +57,16 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(70, 105);
+            label1.Location = new Point(87, 125);
             label1.Name = "label1";
-            label1.Size = new Size(85, 20);
+            label1.Size = new Size(154, 20);
             label1.TabIndex = 32;
-            label1.Text = "Restaurants";
+            label1.Text = "Available Restaurants:";
+            label1.Click += label1_Click;
             // 
             // order_btn
             // 
-            order_btn.Location = new Point(169, 415);
+            order_btn.Location = new Point(187, 409);
             order_btn.Name = "order_btn";
             order_btn.Size = new Size(94, 29);
             order_btn.TabIndex = 33;
@@ -74,7 +75,7 @@
             // 
             // profile_btn
             // 
-            profile_btn.Location = new Point(509, 415);
+            profile_btn.Location = new Point(548, 409);
             profile_btn.Name = "profile_btn";
             profile_btn.Size = new Size(94, 29);
             profile_btn.TabIndex = 34;
