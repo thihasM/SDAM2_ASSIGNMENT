@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace LOGIN_SDAM_ASSIGNMENT
 {
-    public partial class ResturantProfile: Form
+    public partial class ResturantProfile : Form
     {
         public ResturantProfile()
         {
             InitializeComponent();
+        }
+
+        private void ResturantProfile_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
