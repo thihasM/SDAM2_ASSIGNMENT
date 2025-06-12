@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace LOGIN_SDAM_ASSIGNMENT
 {
-    public partial class CustomerProfile: Form
+    public partial class CustomerProfile : Form
     {
         public CustomerProfile()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
