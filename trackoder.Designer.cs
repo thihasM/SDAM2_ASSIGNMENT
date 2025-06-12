@@ -32,9 +32,9 @@
             Back_btn = new Button();
             order_dt_lb = new ListBox();
             ship_dt_lb = new ListBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            order_st_txt = new Label();
+            order_dt_txt = new Label();
+            ship_txt = new Label();
             order_st_lb = new ListBox();
             SuspendLayout();
             // 
@@ -72,34 +72,34 @@
             ship_dt_lb.Size = new Size(197, 104);
             ship_dt_lb.TabIndex = 3;
             // 
-            // label1
+            // order_st_txt
             // 
-            label1.AutoSize = true;
-            label1.BackColor = SystemColors.Control;
-            label1.Location = new Point(372, 45);
-            label1.Name = "label1";
-            label1.Size = new Size(91, 20);
-            label1.TabIndex = 4;
-            label1.Text = "Order Status";
+            order_st_txt.AutoSize = true;
+            order_st_txt.BackColor = SystemColors.Control;
+            order_st_txt.Location = new Point(372, 45);
+            order_st_txt.Name = "order_st_txt";
+            order_st_txt.Size = new Size(91, 20);
+            order_st_txt.TabIndex = 4;
+            order_st_txt.Text = "Order Status";
             // 
-            // label2
+            // order_dt_txt
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(369, 147);
-            label2.Name = "label2";
-            label2.Size = new Size(97, 20);
-            label2.TabIndex = 5;
-            label2.Text = "Order Details";
+            order_dt_txt.AutoSize = true;
+            order_dt_txt.Location = new Point(369, 147);
+            order_dt_txt.Name = "order_dt_txt";
+            order_dt_txt.Size = new Size(97, 20);
+            order_dt_txt.TabIndex = 5;
+            order_dt_txt.Text = "Order Details";
             // 
-            // label3
+            // ship_txt
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(358, 334);
-            label3.Name = "label3";
-            label3.Size = new Size(125, 20);
-            label3.TabIndex = 6;
-            label3.Text = "Shipping Address";
-            label3.Click += label3_Click;
+            ship_txt.AutoSize = true;
+            ship_txt.Location = new Point(358, 334);
+            ship_txt.Name = "ship_txt";
+            ship_txt.Size = new Size(125, 20);
+            ship_txt.TabIndex = 6;
+            ship_txt.Text = "Shipping Address";
+            ship_txt.Click += label3_Click;
             // 
             // order_st_lb
             // 
@@ -115,9 +115,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(862, 628);
             Controls.Add(order_st_lb);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(ship_txt);
+            Controls.Add(order_dt_txt);
+            Controls.Add(order_st_txt);
             Controls.Add(ship_dt_lb);
             Controls.Add(order_dt_lb);
             Controls.Add(Back_btn);
@@ -134,9 +134,9 @@
         private Button Back_btn;
         private ListBox order_dt_lb;
         private ListBox ship_dt_lb;
-        private Label label1;
-        private Label label2;
-        private Label label3;
+        private Label order_st_txt;
+        private Label order_dt_txt;
+        private Label ship_txt;
         private ListBox order_st_lb;
     }
 }
