@@ -15,6 +15,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
         public cartpage()
         {
             InitializeComponent();
+
         }
 
         private void cartpage_Load(object sender, EventArgs e)
