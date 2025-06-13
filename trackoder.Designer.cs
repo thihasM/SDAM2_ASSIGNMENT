@@ -48,11 +48,11 @@
             livetrack_btn.FlatStyle = FlatStyle.Popup;
             livetrack_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             livetrack_btn.ForeColor = SystemColors.Control;
-            livetrack_btn.Location = new Point(607, 409);
+            livetrack_btn.Location = new Point(674, 409);
             livetrack_btn.Name = "livetrack_btn";
-            livetrack_btn.Size = new Size(167, 29);
+            livetrack_btn.Size = new Size(114, 29);
             livetrack_btn.TabIndex = 0;
-            livetrack_btn.Text = "Live track Your Order";
+            livetrack_btn.Text = "Live Track";
             livetrack_btn.UseVisualStyleBackColor = false;
             // 
             // Back_btn
@@ -61,7 +61,7 @@
             Back_btn.FlatStyle = FlatStyle.Popup;
             Back_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Back_btn.ForeColor = SystemColors.Control;
-            Back_btn.Location = new Point(0, 12);
+            Back_btn.Location = new Point(12, 12);
             Back_btn.Name = "Back_btn";
             Back_btn.Size = new Size(93, 33);
             Back_btn.TabIndex = 1;
