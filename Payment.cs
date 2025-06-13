@@ -21,5 +21,15 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
 
         }
+
+        private void back_home_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Payment_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

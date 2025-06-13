@@ -41,13 +41,17 @@
             expdate_tb = new TextBox();
             cvc_tb = new TextBox();
             label1 = new Label();
+            pictureBox1 = new PictureBox();
+            panel1 = new Panel();
+            order_st_txt = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // cash_radio_btn
             // 
             cash_radio_btn.AutoSize = true;
             cash_radio_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            cash_radio_btn.Location = new Point(238, 114);
+            cash_radio_btn.Location = new Point(75, 136);
             cash_radio_btn.Margin = new Padding(4, 3, 4, 3);
             cash_radio_btn.Name = "cash_radio_btn";
             cash_radio_btn.Size = new Size(73, 27);
@@ -60,7 +64,7 @@
             // 
             card_radio_btn.AutoSize = true;
             card_radio_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            card_radio_btn.Location = new Point(808, 114);
+            card_radio_btn.Location = new Point(602, 136);
             card_radio_btn.Margin = new Padding(4, 3, 4, 3);
             card_radio_btn.Name = "card_radio_btn";
             card_radio_btn.Size = new Size(73, 27);
@@ -73,7 +77,7 @@
             // 
             card_name_txt.AutoSize = true;
             card_name_txt.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            card_name_txt.Location = new Point(162, 193);
+            card_name_txt.Location = new Point(13, 172);
             card_name_txt.Margin = new Padding(4, 0, 4, 0);
             card_name_txt.Name = "card_name_txt";
             card_name_txt.Size = new Size(159, 23);
@@ -84,7 +88,7 @@
             // 
             card_number_txt.AutoSize = true;
             card_number_txt.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            card_number_txt.Location = new Point(162, 290);
+            card_number_txt.Location = new Point(13, 245);
             card_number_txt.Margin = new Padding(4, 0, 4, 0);
             card_number_txt.Name = "card_number_txt";
             card_number_txt.Size = new Size(124, 23);
@@ -95,7 +99,7 @@
             // 
             expdate_txt.AutoSize = true;
             expdate_txt.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            expdate_txt.Location = new Point(358, 429);
+            expdate_txt.Location = new Point(93, 327);
             expdate_txt.Margin = new Padding(4, 0, 4, 0);
             expdate_txt.Name = "expdate_txt";
             expdate_txt.Size = new Size(112, 23);
@@ -107,7 +111,7 @@
             // 
             cvc_txt.AutoSize = true;
             cvc_txt.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            cvc_txt.Location = new Point(764, 429);
+            cvc_txt.Location = new Point(593, 327);
             cvc_txt.Margin = new Padding(4, 0, 4, 0);
             cvc_txt.Name = "cvc_txt";
             cvc_txt.Size = new Size(52, 23);
@@ -116,43 +120,51 @@
             // 
             // placeorder_txt
             // 
-            placeorder_txt.Location = new Point(530, 528);
+            placeorder_txt.BackColor = Color.Black;
+            placeorder_txt.FlatStyle = FlatStyle.Popup;
+            placeorder_txt.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            placeorder_txt.ForeColor = SystemColors.Control;
+            placeorder_txt.Location = new Point(301, 399);
             placeorder_txt.Margin = new Padding(4, 3, 4, 3);
             placeorder_txt.Name = "placeorder_txt";
             placeorder_txt.Size = new Size(186, 39);
             placeorder_txt.TabIndex = 6;
             placeorder_txt.Text = "Place Order";
-            placeorder_txt.UseVisualStyleBackColor = true;
+            placeorder_txt.UseVisualStyleBackColor = false;
             // 
             // back_home_btn
             // 
-            back_home_btn.Location = new Point(510, 588);
+            back_home_btn.BackColor = Color.Black;
+            back_home_btn.FlatStyle = FlatStyle.Popup;
+            back_home_btn.ForeColor = SystemColors.Control;
+            back_home_btn.Location = new Point(13, 30);
             back_home_btn.Margin = new Padding(4, 3, 4, 3);
             back_home_btn.Name = "back_home_btn";
-            back_home_btn.Size = new Size(230, 33);
+            back_home_btn.Size = new Size(101, 33);
             back_home_btn.TabIndex = 7;
-            back_home_btn.Text = "Back to Homepage";
-            back_home_btn.UseVisualStyleBackColor = true;
+            back_home_btn.Text = "Go Back";
+            back_home_btn.UseVisualStyleBackColor = false;
+            back_home_btn.Click += back_home_btn_Click;
             // 
             // cardname_tb
             // 
-            cardname_tb.Location = new Point(162, 232);
+            cardname_tb.Location = new Point(13, 203);
             cardname_tb.Margin = new Padding(4, 3, 4, 3);
             cardname_tb.Name = "cardname_tb";
-            cardname_tb.Size = new Size(865, 30);
+            cardname_tb.Size = new Size(781, 30);
             cardname_tb.TabIndex = 8;
             // 
             // cardnum_tb
             // 
-            cardnum_tb.Location = new Point(162, 332);
+            cardnum_tb.Location = new Point(13, 276);
             cardnum_tb.Margin = new Padding(4, 3, 4, 3);
             cardnum_tb.Name = "cardnum_tb";
-            cardnum_tb.Size = new Size(865, 30);
+            cardnum_tb.Size = new Size(781, 30);
             cardnum_tb.TabIndex = 9;
             // 
             // expdate_tb
             // 
-            expdate_tb.Location = new Point(348, 465);
+            expdate_tb.Location = new Point(75, 355);
             expdate_tb.Margin = new Padding(4, 3, 4, 3);
             expdate_tb.Name = "expdate_tb";
             expdate_tb.Size = new Size(150, 30);
@@ -160,7 +172,7 @@
             // 
             // cvc_tb
             // 
-            cvc_tb.Location = new Point(738, 465);
+            cvc_tb.Location = new Point(567, 355);
             cvc_tb.Margin = new Padding(4, 3, 4, 3);
             cvc_tb.Name = "cvc_tb";
             cvc_tb.Size = new Size(108, 30);
@@ -172,19 +184,52 @@
             label1.BackColor = Color.PowderBlue;
             label1.Font = new Font("Stencil", 28.2F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(411, 10);
+            label1.Location = new Point(262, 10);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(257, 56);
             label1.TabIndex = 12;
             label1.Text = "Handiyen";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.PowderBlue;
+            pictureBox1.Image = Properties.Resources.d;
+            pictureBox1.Location = new Point(689, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(99, 89);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 13;
+            pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ActiveCaptionText;
+            panel1.Location = new Point(25, 116);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(750, 3);
+            panel1.TabIndex = 40;
+            // 
+            // order_st_txt
+            // 
+            order_st_txt.AutoSize = true;
+            order_st_txt.BackColor = Color.Transparent;
+            order_st_txt.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            order_st_txt.Location = new Point(341, 90);
+            order_st_txt.Name = "order_st_txt";
+            order_st_txt.Size = new Size(124, 23);
+            order_st_txt.TabIndex = 41;
+            order_st_txt.Text = "Payment Page";
+            // 
             // Payment
             // 
             AutoScaleDimensions = new SizeF(12F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
-            ClientSize = new Size(1200, 518);
+            ClientSize = new Size(800, 450);
+            Controls.Add(order_st_txt);
+            Controls.Add(panel1);
+            Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(cvc_tb);
             Controls.Add(expdate_tb);
@@ -202,6 +247,8 @@
             Margin = new Padding(4, 3, 4, 3);
             Name = "Payment";
             Text = "Payment";
+            Load += Payment_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -221,5 +268,8 @@
         private TextBox expdate_tb;
         private TextBox cvc_tb;
         private Label label1;
+        private PictureBox pictureBox1;
+        private Panel panel1;
+        private Label order_st_txt;
     }
 }
