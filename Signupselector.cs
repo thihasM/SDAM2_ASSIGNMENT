@@ -37,5 +37,10 @@ namespace LOGIN_SDAM_ASSIGNMENT
             signupconform.Show();
             this.Close();
         }
+
+        private void Signupselector_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
