@@ -90,23 +90,21 @@
             // log_usen_txtb
             // 
             log_usen_txtb.BackColor = SystemColors.ControlLightLight;
-            log_usen_txtb.BorderStyle = BorderStyle.FixedSingle;
             log_usen_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             log_usen_txtb.ForeColor = SystemColors.Desktop;
             log_usen_txtb.Location = new Point(363, 172);
             log_usen_txtb.Name = "log_usen_txtb";
-            log_usen_txtb.PlaceholderText = "Enter your user name ";
+            log_usen_txtb.PlaceholderText = "Enter Your User Name ";
             log_usen_txtb.Size = new Size(187, 27);
             log_usen_txtb.TabIndex = 6;
             // 
             // log_pass_txtb
             // 
             log_pass_txtb.BackColor = SystemColors.ControlLightLight;
-            log_pass_txtb.BorderStyle = BorderStyle.FixedSingle;
             log_pass_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             log_pass_txtb.Location = new Point(363, 232);
             log_pass_txtb.Name = "log_pass_txtb";
-            log_pass_txtb.PlaceholderText = "Enter your user password";
+            log_pass_txtb.PlaceholderText = "Enter Your User Password";
             log_pass_txtb.Size = new Size(187, 27);
             log_pass_txtb.TabIndex = 7;
             // 

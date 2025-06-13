@@ -77,54 +77,49 @@
             // sign_con_conpass_txtb
             // 
             sign_con_conpass_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_con_conpass_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_con_conpass_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_con_conpass_txtb.Location = new Point(390, 335);
             sign_con_conpass_txtb.Name = "sign_con_conpass_txtb";
-            sign_con_conpass_txtb.PlaceholderText = "Confirm Password";
+            sign_con_conpass_txtb.PlaceholderText = "Confirm Your Password";
             sign_con_conpass_txtb.Size = new Size(250, 27);
             sign_con_conpass_txtb.TabIndex = 27;
             // 
             // sign_con_email_txtb
             // 
             sign_con_email_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_con_email_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_con_email_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_con_email_txtb.Location = new Point(390, 213);
             sign_con_email_txtb.Name = "sign_con_email_txtb";
-            sign_con_email_txtb.PlaceholderText = "Enter Your Email";
+            sign_con_email_txtb.PlaceholderText = "Enter Your Email Address";
             sign_con_email_txtb.Size = new Size(250, 27);
             sign_con_email_txtb.TabIndex = 25;
             // 
             // sign_con_pnum_txtb
             // 
             sign_con_pnum_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_con_pnum_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_con_pnum_txtb.Location = new Point(390, 255);
             sign_con_pnum_txtb.Name = "sign_con_pnum_txtb";
-            sign_con_pnum_txtb.PlaceholderText = "+94 XXXXXXXXX";
+            sign_con_pnum_txtb.PlaceholderText = "Enter Your Phone Number";
             sign_con_pnum_txtb.Size = new Size(250, 27);
             sign_con_pnum_txtb.TabIndex = 24;
             // 
             // sign_con_pass_txtb
             // 
             sign_con_pass_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_con_pass_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_con_pass_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_con_pass_txtb.Location = new Point(390, 295);
             sign_con_pass_txtb.Name = "sign_con_pass_txtb";
-            sign_con_pass_txtb.PlaceholderText = "Password";
+            sign_con_pass_txtb.PlaceholderText = "Enter Your Password";
             sign_con_pass_txtb.Size = new Size(250, 27);
             sign_con_pass_txtb.TabIndex = 23;
             // 
             // sign_con_name_txtb
             // 
             sign_con_name_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_con_name_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_con_name_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_con_name_txtb.Location = new Point(390, 103);
             sign_con_name_txtb.Name = "sign_con_name_txtb";
-            sign_con_name_txtb.PlaceholderText = "Enter Your Name ...";
+            sign_con_name_txtb.PlaceholderText = "Enter Your Name";
             sign_con_name_txtb.Size = new Size(250, 27);
             sign_con_name_txtb.TabIndex = 22;
             // 
@@ -222,11 +217,10 @@
             // sign_con_uname_txtb
             // 
             sign_con_uname_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_con_uname_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_con_uname_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_con_uname_txtb.Location = new Point(390, 139);
             sign_con_uname_txtb.Name = "sign_con_uname_txtb";
-            sign_con_uname_txtb.PlaceholderText = "Enter your user Name ...";
+            sign_con_uname_txtb.PlaceholderText = "Enter Your User Name ";
             sign_con_uname_txtb.Size = new Size(250, 27);
             sign_con_uname_txtb.TabIndex = 34;
             // 

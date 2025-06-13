@@ -113,7 +113,6 @@
             // sign_res_uname_txtb
             // 
             sign_res_uname_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_res_uname_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_res_uname_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_res_uname_txtb.Location = new Point(372, 138);
             sign_res_uname_txtb.Name = "sign_res_uname_txtb";
@@ -124,39 +123,36 @@
             // sign_res_pass_txtb
             // 
             sign_res_pass_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_res_pass_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_res_pass_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_res_pass_txtb.Location = new Point(372, 303);
             sign_res_pass_txtb.Name = "sign_res_pass_txtb";
-            sign_res_pass_txtb.PlaceholderText = "Password";
+            sign_res_pass_txtb.PlaceholderText = "Enter Your Password";
             sign_res_pass_txtb.Size = new Size(250, 27);
             sign_res_pass_txtb.TabIndex = 8;
             // 
             // sign_res_pnum_txtb
             // 
             sign_res_pnum_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_res_pnum_txtb.BorderStyle = BorderStyle.FixedSingle;
+            sign_res_pnum_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_res_pnum_txtb.Location = new Point(372, 263);
             sign_res_pnum_txtb.Name = "sign_res_pnum_txtb";
-            sign_res_pnum_txtb.PlaceholderText = "+94 XXXXXXXXX";
+            sign_res_pnum_txtb.PlaceholderText = "Enter Your Phone Number";
             sign_res_pnum_txtb.Size = new Size(250, 27);
             sign_res_pnum_txtb.TabIndex = 9;
             // 
             // sign_res_email_txtb
             // 
             sign_res_email_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_res_email_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_res_email_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_res_email_txtb.Location = new Point(372, 221);
             sign_res_email_txtb.Name = "sign_res_email_txtb";
-            sign_res_email_txtb.PlaceholderText = "Enter Your Email";
+            sign_res_email_txtb.PlaceholderText = "Enter Your Email Address";
             sign_res_email_txtb.Size = new Size(250, 27);
             sign_res_email_txtb.TabIndex = 10;
             // 
             // sign_res_add_txtb
             // 
             sign_res_add_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_res_add_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_res_add_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_res_add_txtb.Location = new Point(372, 180);
             sign_res_add_txtb.Name = "sign_res_add_txtb";
@@ -167,11 +163,10 @@
             // sign_res_conpass_txtb
             // 
             sign_res_conpass_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_res_conpass_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_res_conpass_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_res_conpass_txtb.Location = new Point(372, 343);
             sign_res_conpass_txtb.Name = "sign_res_conpass_txtb";
-            sign_res_conpass_txtb.PlaceholderText = "Confirm Password";
+            sign_res_conpass_txtb.PlaceholderText = "Confirm Your Password";
             sign_res_conpass_txtb.Size = new Size(250, 27);
             sign_res_conpass_txtb.TabIndex = 12;
             // 
@@ -207,7 +202,6 @@
             // sign_res_name_txtb
             // 
             sign_res_name_txtb.BackColor = SystemColors.ControlLightLight;
-            sign_res_name_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_res_name_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sign_res_name_txtb.Location = new Point(372, 99);
             sign_res_name_txtb.Name = "sign_res_name_txtb";
