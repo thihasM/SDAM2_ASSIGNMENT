@@ -103,7 +103,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void menueditpage_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void menu_edit_lb_SelectedIndexChanged(object sender, EventArgs e)
@@ -208,6 +208,11 @@ namespace LOGIN_SDAM_ASSIGNMENT
         }
 
         private void Itm_name_input_txt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }
