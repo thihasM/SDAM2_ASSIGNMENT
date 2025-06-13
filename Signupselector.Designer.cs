@@ -93,7 +93,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(251, 120);
+            label2.Location = new Point(234, 120);
             label2.Name = "label2";
             label2.Size = new Size(337, 38);
             label2.TabIndex = 5;
