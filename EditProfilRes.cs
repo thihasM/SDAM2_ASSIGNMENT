@@ -41,5 +41,10 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
