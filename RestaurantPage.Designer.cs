@@ -34,28 +34,34 @@
             gobck_btn = new Button();
             plc_odr_btn = new Button();
             cus_profile_btn = new Button();
+            pictureBox1 = new PictureBox();
+            label4 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(348, 46);
+            lblName.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblName.Location = new Point(348, 100);
             lblName.Name = "lblName";
-            lblName.Size = new Size(17, 20);
+            lblName.Size = new Size(20, 23);
             lblName.TabIndex = 0;
             lblName.Text = "ll";
             // 
             // lblAddress
             // 
             lblAddress.AutoSize = true;
-            lblAddress.Location = new Point(348, 81);
+            lblAddress.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAddress.Location = new Point(348, 135);
             lblAddress.Name = "lblAddress";
-            lblAddress.Size = new Size(17, 20);
+            lblAddress.Size = new Size(22, 22);
             lblAddress.TabIndex = 1;
             lblAddress.Text = "ll";
             // 
             // menu_items
             // 
+            menu_items.BackColor = Color.LightSteelBlue;
             menu_items.FormattingEnabled = true;
             menu_items.Location = new Point(174, 178);
             menu_items.Name = "menu_items";
@@ -65,39 +71,75 @@
             // 
             // gobck_btn
             // 
-            gobck_btn.Location = new Point(12, 12);
+            gobck_btn.BackColor = Color.Black;
+            gobck_btn.FlatStyle = FlatStyle.Popup;
+            gobck_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            gobck_btn.ForeColor = SystemColors.Control;
+            gobck_btn.Location = new Point(12, 34);
             gobck_btn.Name = "gobck_btn";
             gobck_btn.Size = new Size(94, 29);
             gobck_btn.TabIndex = 3;
-            gobck_btn.Text = "Back";
-            gobck_btn.UseVisualStyleBackColor = true;
+            gobck_btn.Text = "Go Back";
+            gobck_btn.UseVisualStyleBackColor = false;
             gobck_btn.Click += gobck_btn_Click;
             // 
             // plc_odr_btn
             // 
-            plc_odr_btn.Location = new Point(154, 404);
+            plc_odr_btn.BackColor = Color.Black;
+            plc_odr_btn.FlatStyle = FlatStyle.Popup;
+            plc_odr_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            plc_odr_btn.ForeColor = SystemColors.Control;
+            plc_odr_btn.Location = new Point(192, 394);
             plc_odr_btn.Name = "plc_odr_btn";
-            plc_odr_btn.Size = new Size(94, 29);
+            plc_odr_btn.Size = new Size(141, 29);
             plc_odr_btn.TabIndex = 4;
             plc_odr_btn.Text = "Place Order";
-            plc_odr_btn.UseVisualStyleBackColor = true;
+            plc_odr_btn.UseVisualStyleBackColor = false;
             plc_odr_btn.Click += plc_odr_btn_Click;
             // 
             // cus_profile_btn
             // 
-            cus_profile_btn.Location = new Point(472, 404);
+            cus_profile_btn.BackColor = Color.Black;
+            cus_profile_btn.FlatStyle = FlatStyle.Popup;
+            cus_profile_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cus_profile_btn.ForeColor = SystemColors.Control;
+            cus_profile_btn.Location = new Point(440, 394);
             cus_profile_btn.Name = "cus_profile_btn";
             cus_profile_btn.Size = new Size(94, 29);
             cus_profile_btn.TabIndex = 5;
             cus_profile_btn.Text = "Profile";
-            cus_profile_btn.UseVisualStyleBackColor = true;
+            cus_profile_btn.UseVisualStyleBackColor = false;
             cus_profile_btn.Click += cus_profile_btn_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.PowderBlue;
+            pictureBox1.Image = Properties.Resources.d;
+            pictureBox1.Location = new Point(689, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(99, 89);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Stencil", 28.2F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label4.Location = new Point(241, 12);
+            label4.Name = "label4";
+            label4.Size = new Size(257, 56);
+            label4.TabIndex = 11;
+            label4.Text = "Handiyen";
             // 
             // RestaurantPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.PowderBlue;
             ClientSize = new Size(800, 463);
+            Controls.Add(label4);
+            Controls.Add(pictureBox1);
             Controls.Add(cus_profile_btn);
             Controls.Add(plc_odr_btn);
             Controls.Add(gobck_btn);
@@ -107,6 +149,7 @@
             Name = "RestaurantPage";
             Text = "RestaurantPage";
             Load += RestaurantPage_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -119,5 +162,7 @@
         private Button gobck_btn;
         private Button plc_odr_btn;
         private Button cus_profile_btn;
+        private PictureBox pictureBox1;
+        private Label label4;
     }
 }
