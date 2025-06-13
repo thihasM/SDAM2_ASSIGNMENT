@@ -70,6 +70,7 @@
             // 
             // order_dt_lb
             // 
+            order_dt_lb.BackColor = Color.LightSteelBlue;
             order_dt_lb.FormattingEnabled = true;
             order_dt_lb.Location = new Point(304, 198);
             order_dt_lb.Name = "order_dt_lb";
@@ -78,6 +79,7 @@
             // 
             // ship_dt_lb
             // 
+            ship_dt_lb.BackColor = Color.LightSteelBlue;
             ship_dt_lb.FormattingEnabled = true;
             ship_dt_lb.Location = new Point(304, 358);
             ship_dt_lb.Name = "ship_dt_lb";
@@ -118,6 +120,7 @@
             // 
             // order_st_lb
             // 
+            order_st_lb.BackColor = Color.LightSteelBlue;
             order_st_lb.FormattingEnabled = true;
             order_st_lb.Location = new Point(288, 138);
             order_st_lb.Name = "order_st_lb";
