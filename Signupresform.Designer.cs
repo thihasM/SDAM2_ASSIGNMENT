@@ -64,7 +64,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(159, 183);
+            label3.Location = new Point(159, 180);
             label3.Name = "label3";
             label3.Size = new Size(134, 22);
             label3.TabIndex = 2;
@@ -158,7 +158,7 @@
             sign_res_add_txtb.BackColor = SystemColors.ControlLightLight;
             sign_res_add_txtb.BorderStyle = BorderStyle.FixedSingle;
             sign_res_add_txtb.Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            sign_res_add_txtb.Location = new Point(372, 183);
+            sign_res_add_txtb.Location = new Point(372, 180);
             sign_res_add_txtb.Name = "sign_res_add_txtb";
             sign_res_add_txtb.PlaceholderText = "Enter Your Address";
             sign_res_add_txtb.Size = new Size(250, 27);
