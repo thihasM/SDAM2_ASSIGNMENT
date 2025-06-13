@@ -53,17 +53,18 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(322, 91);
+            label7.Location = new Point(349, 94);
             label7.Name = "label7";
             label7.Size = new Size(88, 23);
             label7.TabIndex = 42;
             label7.Text = "Cart Page";
+            label7.Click += label7_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.PowderBlue;
             pictureBox1.Image = Properties.Resources.d;
-            pictureBox1.Location = new Point(689, 25);
+            pictureBox1.Location = new Point(702, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(99, 89);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -85,17 +86,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(38, 158);
+            label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(38, 156);
             label1.Name = "label1";
-            label1.Size = new Size(103, 23);
+            label1.Size = new Size(113, 23);
             label1.TabIndex = 44;
             label1.Text = "Your Order:";
             // 
             // cart_lb
             // 
+            cart_lb.BackColor = Color.LightSteelBlue;
             cart_lb.FormattingEnabled = true;
-            cart_lb.Location = new Point(144, 204);
+            cart_lb.Location = new Point(179, 203);
             cart_lb.Name = "cart_lb";
             cart_lb.Size = new Size(423, 184);
             cart_lb.TabIndex = 45;
@@ -103,10 +105,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(38, 445);
             label2.Name = "label2";
-            label2.Size = new Size(207, 23);
+            label2.Size = new Size(226, 23);
             label2.TabIndex = 46;
             label2.Text = "Enter Delivery Location :";
             // 
@@ -114,6 +116,7 @@
             // 
             del_loc_tb.Location = new Point(277, 445);
             del_loc_tb.Name = "del_loc_tb";
+            del_loc_tb.PlaceholderText = "Enter Your Delivery Location";
             del_loc_tb.Size = new Size(384, 27);
             del_loc_tb.TabIndex = 47;
             // 
@@ -123,11 +126,11 @@
             user_back_btn.FlatStyle = FlatStyle.Popup;
             user_back_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             user_back_btn.ForeColor = SystemColors.Control;
-            user_back_btn.Location = new Point(444, 593);
+            user_back_btn.Location = new Point(414, 562);
             user_back_btn.Name = "user_back_btn";
             user_back_btn.Size = new Size(108, 29);
             user_back_btn.TabIndex = 48;
-            user_back_btn.Text = "Back";
+            user_back_btn.Text = "Go Back";
             user_back_btn.UseVisualStyleBackColor = false;
             user_back_btn.Click += user_back_btn_Click;
             // 
@@ -137,7 +140,7 @@
             payment_btn.FlatStyle = FlatStyle.Popup;
             payment_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             payment_btn.ForeColor = SystemColors.Control;
-            payment_btn.Location = new Point(567, 593);
+            payment_btn.Location = new Point(553, 562);
             payment_btn.Name = "payment_btn";
             payment_btn.Size = new Size(108, 29);
             payment_btn.TabIndex = 49;
@@ -149,6 +152,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.PowderBlue;
             ClientSize = new Size(813, 676);
             Controls.Add(payment_btn);
             Controls.Add(user_back_btn);
