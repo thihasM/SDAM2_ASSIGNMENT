@@ -42,8 +42,9 @@
             // 
             panel1.BackColor = Color.Black;
             panel1.Location = new Point(15, 115);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(750, 3);
+            panel1.Size = new Size(750, 4);
             panel1.TabIndex = 51;
             // 
             // label7
@@ -61,6 +62,7 @@
             pictureBox1.BackColor = Color.PowderBlue;
             pictureBox1.Image = Properties.Resources.d;
             pictureBox1.Location = new Point(682, 20);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(99, 89);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -81,8 +83,10 @@
             // 
             // res_rev_lb
             // 
+            res_rev_lb.BackColor = Color.LightSteelBlue;
             res_rev_lb.FormattingEnabled = true;
-            res_rev_lb.Location = new Point(141, 142);
+            res_rev_lb.Location = new Point(141, 156);
+            res_rev_lb.Margin = new Padding(3, 4, 3, 4);
             res_rev_lb.Name = "res_rev_lb";
             res_rev_lb.Size = new Size(495, 184);
             res_rev_lb.TabIndex = 53;
@@ -91,7 +95,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(25, 142);
+            label1.Location = new Point(25, 156);
             label1.Name = "label1";
             label1.Size = new Size(89, 23);
             label1.TabIndex = 52;
@@ -103,18 +107,20 @@
             user_back_btn.FlatStyle = FlatStyle.Popup;
             user_back_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             user_back_btn.ForeColor = SystemColors.Control;
-            user_back_btn.Location = new Point(528, 388);
+            user_back_btn.Location = new Point(528, 369);
+            user_back_btn.Margin = new Padding(3, 4, 3, 4);
             user_back_btn.Name = "user_back_btn";
             user_back_btn.Size = new Size(108, 29);
             user_back_btn.TabIndex = 54;
-            user_back_btn.Text = "Back";
+            user_back_btn.Text = "Go Back";
             user_back_btn.UseVisualStyleBackColor = false;
             // 
             // ReviewRes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(798, 489);
+            BackColor = Color.PowderBlue;
+            ClientSize = new Size(800, 449);
             Controls.Add(user_back_btn);
             Controls.Add(res_rev_lb);
             Controls.Add(label1);
@@ -122,6 +128,7 @@
             Controls.Add(label7);
             Controls.Add(pictureBox1);
             Controls.Add(label6);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ReviewRes";
             Text = "ReviewRes";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

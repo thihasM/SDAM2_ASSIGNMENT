@@ -64,7 +64,7 @@
             // 
             pictureBox1.BackColor = Color.PowderBlue;
             pictureBox1.Image = Properties.Resources.d;
-            pictureBox1.Location = new Point(702, 12);
+            pictureBox1.Location = new Point(689, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(99, 89);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -87,7 +87,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(38, 156);
+            label1.Location = new Point(38, 150);
             label1.Name = "label1";
             label1.Size = new Size(113, 23);
             label1.TabIndex = 44;
@@ -97,7 +97,7 @@
             // 
             cart_lb.BackColor = Color.LightSteelBlue;
             cart_lb.FormattingEnabled = true;
-            cart_lb.Location = new Point(179, 203);
+            cart_lb.Location = new Point(184, 150);
             cart_lb.Name = "cart_lb";
             cart_lb.Size = new Size(423, 184);
             cart_lb.TabIndex = 45;
@@ -106,7 +106,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(38, 445);
+            label2.Location = new Point(38, 358);
             label2.Name = "label2";
             label2.Size = new Size(226, 23);
             label2.TabIndex = 46;
@@ -114,7 +114,7 @@
             // 
             // del_loc_tb
             // 
-            del_loc_tb.Location = new Point(277, 445);
+            del_loc_tb.Location = new Point(280, 358);
             del_loc_tb.Name = "del_loc_tb";
             del_loc_tb.PlaceholderText = "Enter Your Delivery Location";
             del_loc_tb.Size = new Size(384, 27);
@@ -126,7 +126,7 @@
             user_back_btn.FlatStyle = FlatStyle.Popup;
             user_back_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             user_back_btn.ForeColor = SystemColors.Control;
-            user_back_btn.Location = new Point(414, 562);
+            user_back_btn.Location = new Point(426, 410);
             user_back_btn.Name = "user_back_btn";
             user_back_btn.Size = new Size(108, 29);
             user_back_btn.TabIndex = 48;
@@ -140,7 +140,7 @@
             payment_btn.FlatStyle = FlatStyle.Popup;
             payment_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             payment_btn.ForeColor = SystemColors.Control;
-            payment_btn.Location = new Point(553, 562);
+            payment_btn.Location = new Point(551, 410);
             payment_btn.Name = "payment_btn";
             payment_btn.Size = new Size(108, 29);
             payment_btn.TabIndex = 49;
@@ -153,7 +153,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
-            ClientSize = new Size(813, 676);
+            ClientSize = new Size(800, 450);
             Controls.Add(payment_btn);
             Controls.Add(user_back_btn);
             Controls.Add(del_loc_tb);
