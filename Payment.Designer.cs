@@ -45,7 +45,7 @@
             // cash_radio_btn
             // 
             cash_radio_btn.AutoSize = true;
-            cash_radio_btn.Location = new Point(159, 77);
+            cash_radio_btn.Location = new Point(159, 99);
             cash_radio_btn.Name = "cash_radio_btn";
             cash_radio_btn.Size = new Size(61, 24);
             cash_radio_btn.TabIndex = 0;
@@ -56,7 +56,7 @@
             // card_radio_btn
             // 
             card_radio_btn.AutoSize = true;
-            card_radio_btn.Location = new Point(539, 77);
+            card_radio_btn.Location = new Point(539, 99);
             card_radio_btn.Name = "card_radio_btn";
             card_radio_btn.Size = new Size(61, 24);
             card_radio_btn.TabIndex = 1;
@@ -67,7 +67,7 @@
             // card_name_txt
             // 
             card_name_txt.AutoSize = true;
-            card_name_txt.Location = new Point(108, 146);
+            card_name_txt.Location = new Point(108, 168);
             card_name_txt.Name = "card_name_txt";
             card_name_txt.Size = new Size(127, 20);
             card_name_txt.TabIndex = 2;
@@ -76,7 +76,7 @@
             // card_number_txt
             // 
             card_number_txt.AutoSize = true;
-            card_number_txt.Location = new Point(108, 230);
+            card_number_txt.Location = new Point(108, 252);
             card_number_txt.Name = "card_number_txt";
             card_number_txt.Size = new Size(98, 20);
             card_number_txt.TabIndex = 3;
@@ -85,7 +85,7 @@
             // expdate_txt
             // 
             expdate_txt.AutoSize = true;
-            expdate_txt.Location = new Point(239, 351);
+            expdate_txt.Location = new Point(239, 373);
             expdate_txt.Name = "expdate_txt";
             expdate_txt.Size = new Size(85, 20);
             expdate_txt.TabIndex = 4;
@@ -95,7 +95,7 @@
             // cvc_txt
             // 
             cvc_txt.AutoSize = true;
-            cvc_txt.Location = new Point(509, 351);
+            cvc_txt.Location = new Point(509, 373);
             cvc_txt.Name = "cvc_txt";
             cvc_txt.Size = new Size(36, 20);
             cvc_txt.TabIndex = 5;
@@ -121,28 +121,28 @@
             // 
             // cardname_tb
             // 
-            cardname_tb.Location = new Point(108, 180);
+            cardname_tb.Location = new Point(108, 202);
             cardname_tb.Name = "cardname_tb";
             cardname_tb.Size = new Size(578, 27);
             cardname_tb.TabIndex = 8;
             // 
             // cardnum_tb
             // 
-            cardnum_tb.Location = new Point(108, 267);
+            cardnum_tb.Location = new Point(108, 289);
             cardnum_tb.Name = "cardnum_tb";
             cardnum_tb.Size = new Size(578, 27);
             cardnum_tb.TabIndex = 9;
             // 
             // expdate_tb
             // 
-            expdate_tb.Location = new Point(232, 382);
+            expdate_tb.Location = new Point(232, 404);
             expdate_tb.Name = "expdate_tb";
             expdate_tb.Size = new Size(101, 27);
             expdate_tb.TabIndex = 10;
             // 
             // cvc_tb
             // 
-            cvc_tb.Location = new Point(492, 382);
+            cvc_tb.Location = new Point(492, 404);
             cvc_tb.Name = "cvc_tb";
             cvc_tb.Size = new Size(73, 27);
             cvc_tb.TabIndex = 11;
@@ -151,7 +151,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(815, 570);
+            ClientSize = new Size(800, 450);
             Controls.Add(cvc_tb);
             Controls.Add(expdate_tb);
             Controls.Add(cardnum_tb);
