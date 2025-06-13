@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            livetrack_btn = new Button();
             Back_btn = new Button();
             order_dt_lb = new ListBox();
             ship_dt_lb = new ListBox();
@@ -39,21 +38,10 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             panel1 = new Panel();
+            order_pb = new ProgressBar();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // livetrack_btn
-            // 
-            livetrack_btn.BackColor = Color.Black;
-            livetrack_btn.FlatStyle = FlatStyle.Popup;
-            livetrack_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            livetrack_btn.ForeColor = SystemColors.Control;
-            livetrack_btn.Location = new Point(674, 409);
-            livetrack_btn.Name = "livetrack_btn";
-            livetrack_btn.Size = new Size(114, 29);
-            livetrack_btn.TabIndex = 0;
-            livetrack_btn.Text = "Live Track";
-            livetrack_btn.UseVisualStyleBackColor = false;
             // 
             // Back_btn
             // 
@@ -67,12 +55,13 @@
             Back_btn.TabIndex = 1;
             Back_btn.Text = "Go Back";
             Back_btn.UseVisualStyleBackColor = false;
+            Back_btn.Click += Back_btn_Click;
             // 
             // order_dt_lb
             // 
             order_dt_lb.BackColor = Color.LightSteelBlue;
             order_dt_lb.FormattingEnabled = true;
-            order_dt_lb.Location = new Point(304, 198);
+            order_dt_lb.Location = new Point(304, 206);
             order_dt_lb.Name = "order_dt_lb";
             order_dt_lb.Size = new Size(197, 124);
             order_dt_lb.TabIndex = 2;
@@ -101,21 +90,21 @@
             // 
             order_dt_txt.AutoSize = true;
             order_dt_txt.Font = new Font("Times New Roman", 12F);
-            order_dt_txt.Location = new Point(342, 174);
+            order_dt_txt.Location = new Point(304, 173);
             order_dt_txt.Name = "order_dt_txt";
-            order_dt_txt.Size = new Size(119, 22);
+            order_dt_txt.Size = new Size(135, 22);
             order_dt_txt.TabIndex = 5;
-            order_dt_txt.Text = "Order Details";
+            order_dt_txt.Text = "Order Details : ";
             // 
             // ship_txt
             // 
             ship_txt.AutoSize = true;
             ship_txt.Font = new Font("Times New Roman", 12F);
-            ship_txt.Location = new Point(327, 330);
+            ship_txt.Location = new Point(301, 333);
             ship_txt.Name = "ship_txt";
-            ship_txt.Size = new Size(150, 22);
+            ship_txt.Size = new Size(166, 22);
             ship_txt.TabIndex = 6;
-            ship_txt.Text = "Shipping Address";
+            ship_txt.Text = "Shipping Address : ";
             ship_txt.Click += label3_Click;
             // 
             // order_st_lb
@@ -157,12 +146,31 @@
             panel1.Size = new Size(750, 3);
             panel1.TabIndex = 39;
             // 
+            // order_pb
+            // 
+            order_pb.Location = new Point(304, 519);
+            order_pb.Name = "order_pb";
+            order_pb.Size = new Size(197, 29);
+            order_pb.TabIndex = 40;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 12F);
+            label1.Location = new Point(304, 479);
+            label1.Name = "label1";
+            label1.Size = new Size(147, 22);
+            label1.TabIndex = 41;
+            label1.Text = "Order Progress : ";
+            // 
             // trackoder
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(797, 571);
+            Controls.Add(label1);
+            Controls.Add(order_pb);
             Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(pictureBox1);
@@ -173,7 +181,6 @@
             Controls.Add(ship_dt_lb);
             Controls.Add(order_dt_lb);
             Controls.Add(Back_btn);
-            Controls.Add(livetrack_btn);
             Name = "trackoder";
             Text = "trackoder";
             Load += trackoder_Load;
@@ -183,8 +190,6 @@
         }
 
         #endregion
-
-        private Button livetrack_btn;
         private Button Back_btn;
         private ListBox order_dt_lb;
         private ListBox ship_dt_lb;
@@ -195,5 +200,7 @@
         private PictureBox pictureBox1;
         private Label label2;
         private Panel panel1;
+        private ProgressBar order_pb;
+        private Label label1;
     }
 }

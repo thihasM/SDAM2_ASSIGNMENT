@@ -34,6 +34,7 @@
             label2 = new Label();
             pictureBox1 = new PictureBox();
             cus_pro_go_back_btn = new Button();
+            Trck_ord_btn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             cus_delete_account_btn.FlatStyle = FlatStyle.Popup;
             cus_delete_account_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cus_delete_account_btn.ForeColor = Color.White;
-            cus_delete_account_btn.Location = new Point(343, 295);
+            cus_delete_account_btn.Location = new Point(343, 358);
             cus_delete_account_btn.Name = "cus_delete_account_btn";
             cus_delete_account_btn.Size = new Size(119, 57);
             cus_delete_account_btn.TabIndex = 1;
@@ -71,12 +72,13 @@
             cus_log_out_btn.FlatStyle = FlatStyle.Popup;
             cus_log_out_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cus_log_out_btn.ForeColor = Color.White;
-            cus_log_out_btn.Location = new Point(343, 214);
+            cus_log_out_btn.Location = new Point(343, 277);
             cus_log_out_btn.Name = "cus_log_out_btn";
             cus_log_out_btn.Size = new Size(119, 57);
             cus_log_out_btn.TabIndex = 2;
             cus_log_out_btn.Text = "Log Out";
             cus_log_out_btn.UseVisualStyleBackColor = false;
+            cus_log_out_btn.Click += cus_log_out_btn_Click;
             // 
             // label2
             // 
@@ -112,12 +114,27 @@
             cus_pro_go_back_btn.Text = "Go Back";
             cus_pro_go_back_btn.UseVisualStyleBackColor = false;
             // 
+            // Trck_ord_btn
+            // 
+            Trck_ord_btn.BackColor = Color.Black;
+            Trck_ord_btn.FlatStyle = FlatStyle.Popup;
+            Trck_ord_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Trck_ord_btn.ForeColor = Color.White;
+            Trck_ord_btn.Location = new Point(343, 203);
+            Trck_ord_btn.Name = "Trck_ord_btn";
+            Trck_ord_btn.Size = new Size(119, 57);
+            Trck_ord_btn.TabIndex = 38;
+            Trck_ord_btn.Text = "Track Order";
+            Trck_ord_btn.UseVisualStyleBackColor = false;
+            Trck_ord_btn.Click += Trck_ord_btn_Click;
+            // 
             // CustomerProfile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(800, 450);
+            Controls.Add(Trck_ord_btn);
             Controls.Add(cus_pro_go_back_btn);
             Controls.Add(pictureBox1);
             Controls.Add(label2);
@@ -139,5 +156,6 @@
         private Label label2;
         private PictureBox pictureBox1;
         private Button cus_pro_go_back_btn;
+        private Button Trck_ord_btn;
     }
 }

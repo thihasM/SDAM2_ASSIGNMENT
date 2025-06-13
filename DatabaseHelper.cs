@@ -9,7 +9,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public class DatabaseHelper
     {
-        private string connectionString = "Server=localhost;Database=sdam 2;Uid=root;Pwd=;";
+        private string connectionString = "Server=localhost;Database=sdam_2;Uid=root;Pwd=;";
         public MySqlConnection GetConnection()
         {
             return new MySqlConnection(connectionString);

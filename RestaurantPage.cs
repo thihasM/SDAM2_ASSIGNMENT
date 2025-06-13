@@ -32,7 +32,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
             using (MySqlConnection conn = db.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT id, item_name, price FROM restaurant_menu WHERE restaurant_id = @id";
+                string query = "SELECT user_id, item_name, price FROM restaurant_menu WHERE restaurant_id = @user_id";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@id", _restaurant.RestaurantId);
 
@@ -78,14 +78,16 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void cus_profile_btn_Click(object sender, EventArgs e)
         {
-            CustomerProfile customerProfile = new CustomerProfile();
-            customerProfile.Show();
+            ReviewsCus reviewsCus = new ReviewsCus();
+            reviewsCus.Show();
             this.Close();
         }
 
         private void plc_odr_btn_Click(object sender, EventArgs e)
         {
-
+            cartpage cartPage = new cartpage();
+            cartPage.Show();
+            this.Close();
         }
 
         private void menu_items_SelectedIndexChanged(object sender, EventArgs e)

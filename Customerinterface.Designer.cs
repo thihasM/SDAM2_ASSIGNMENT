@@ -78,7 +78,7 @@
             order_btn.Name = "order_btn";
             order_btn.Size = new Size(124, 42);
             order_btn.TabIndex = 33;
-            order_btn.Text = "View Order";
+            order_btn.Text = "Cart";
             order_btn.UseVisualStyleBackColor = false;
             order_btn.Click += order_btn_Click;
             // 
@@ -92,7 +92,7 @@
             profile_btn.Name = "profile_btn";
             profile_btn.Size = new Size(124, 42);
             profile_btn.TabIndex = 34;
-            profile_btn.Text = "Profile";
+            profile_btn.Text = "Reviews";
             profile_btn.UseVisualStyleBackColor = false;
             profile_btn.Click += profile_btn_Click;
             // 

@@ -21,5 +21,12 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
 
         }
+
+        private void user_back_btn_Click(object sender, EventArgs e)
+        {
+            CustomerProfile profile = new CustomerProfile();
+            profile.Show();
+            this.Close();
+        }
     }
 }

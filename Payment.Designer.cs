@@ -34,7 +34,7 @@
             card_number_txt = new Label();
             expdate_txt = new Label();
             cvc_txt = new Label();
-            placeorder_txt = new Button();
+            placeorder_btn = new Button();
             back_home_btn = new Button();
             cardname_tb = new TextBox();
             cardnum_tb = new TextBox();
@@ -118,19 +118,20 @@
             cvc_txt.TabIndex = 5;
             cvc_txt.Text = "CVC";
             // 
-            // placeorder_txt
+            // placeorder_btn
             // 
-            placeorder_txt.BackColor = Color.Black;
-            placeorder_txt.FlatStyle = FlatStyle.Popup;
-            placeorder_txt.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            placeorder_txt.ForeColor = SystemColors.Control;
-            placeorder_txt.Location = new Point(301, 399);
-            placeorder_txt.Margin = new Padding(4, 3, 4, 3);
-            placeorder_txt.Name = "placeorder_txt";
-            placeorder_txt.Size = new Size(186, 39);
-            placeorder_txt.TabIndex = 6;
-            placeorder_txt.Text = "Place Order";
-            placeorder_txt.UseVisualStyleBackColor = false;
+            placeorder_btn.BackColor = Color.Black;
+            placeorder_btn.FlatStyle = FlatStyle.Popup;
+            placeorder_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            placeorder_btn.ForeColor = SystemColors.Control;
+            placeorder_btn.Location = new Point(301, 399);
+            placeorder_btn.Margin = new Padding(4, 3, 4, 3);
+            placeorder_btn.Name = "placeorder_btn";
+            placeorder_btn.Size = new Size(186, 39);
+            placeorder_btn.TabIndex = 6;
+            placeorder_btn.Text = "Place Order";
+            placeorder_btn.UseVisualStyleBackColor = false;
+            placeorder_btn.Click += placeorder_btn_Click;
             // 
             // back_home_btn
             // 
@@ -236,7 +237,7 @@
             Controls.Add(cardnum_tb);
             Controls.Add(cardname_tb);
             Controls.Add(back_home_btn);
-            Controls.Add(placeorder_txt);
+            Controls.Add(placeorder_btn);
             Controls.Add(cvc_txt);
             Controls.Add(expdate_txt);
             Controls.Add(card_number_txt);
@@ -261,7 +262,7 @@
         private Label card_number_txt;
         private Label expdate_txt;
         private Label cvc_txt;
-        private Button placeorder_txt;
+        private Button placeorder_btn;
         private Button back_home_btn;
         private TextBox cardname_tb;
         private TextBox cardnum_tb;

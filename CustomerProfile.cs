@@ -19,7 +19,23 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void button1_Click(object sender, EventArgs e)
         {
+            EditProfileCus editProfileCus = new EditProfileCus();
+            editProfileCus.Show();
+            this.Close();
+        }
 
+        private void cus_log_out_btn_Click(object sender, EventArgs e)
+        {
+            Handiyen handiyen = new Handiyen();
+            handiyen.Show();
+            this.Close();
+        }
+
+        private void Trck_ord_btn_Click(object sender, EventArgs e)
+        {
+            trackoder trackOrder = new trackoder();
+            trackOrder.Show();
+            this.Close();
         }
     }
 }

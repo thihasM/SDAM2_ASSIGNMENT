@@ -10,24 +10,11 @@ using System.Windows.Forms;
 
 namespace LOGIN_SDAM_ASSIGNMENT
 {
-    public partial class cartpage : Form
+    public partial class ReviewsCus : Form
     {
-        public cartpage()
+        public ReviewsCus()
         {
             InitializeComponent();
-
-        }
-
-        private void cartpage_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void payment_btn_Click(object sender, EventArgs e)
-        {
-            Payment payment = new Payment();
-            payment.Show();
-            this.Close();
         }
 
         private void user_back_btn_Click(object sender, EventArgs e)

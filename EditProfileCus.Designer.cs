@@ -142,6 +142,7 @@
             user_back_btn.TabIndex = 12;
             user_back_btn.Text = "Back";
             user_back_btn.UseVisualStyleBackColor = false;
+            user_back_btn.Click += user_back_btn_Click;
             // 
             // label6
             // 

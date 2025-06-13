@@ -46,5 +46,12 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ResturantProfile resturantProfile = new ResturantProfile();
+            resturantProfile.Show();
+            this.Close();
+        }
     }
 }

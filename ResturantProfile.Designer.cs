@@ -51,6 +51,7 @@
             res_edit_btn.TabIndex = 0;
             res_edit_btn.Text = "Edit Profile";
             res_edit_btn.UseVisualStyleBackColor = false;
+            res_edit_btn.Click += res_edit_btn_Click;
             // 
             // res_review_comments_btn
             // 
@@ -62,7 +63,7 @@
             res_review_comments_btn.Name = "res_review_comments_btn";
             res_review_comments_btn.Size = new Size(203, 55);
             res_review_comments_btn.TabIndex = 1;
-            res_review_comments_btn.Text = "Review Comments";
+            res_review_comments_btn.Text = "Reviews";
             res_review_comments_btn.UseVisualStyleBackColor = false;
             res_review_comments_btn.Click += button2_Click;
             // 
@@ -78,6 +79,7 @@
             res_log_out_btn.TabIndex = 2;
             res_log_out_btn.Text = "Log Out";
             res_log_out_btn.UseVisualStyleBackColor = false;
+            res_log_out_btn.Click += res_log_out_btn_Click;
             // 
             // res_delete_account_btn
             // 
@@ -91,6 +93,7 @@
             res_delete_account_btn.TabIndex = 3;
             res_delete_account_btn.Text = "Delete Account";
             res_delete_account_btn.UseVisualStyleBackColor = false;
+            res_delete_account_btn.Click += res_delete_account_btn_Click;
             // 
             // res_edit_food_menu_btn
             // 
@@ -137,8 +140,9 @@
             res_back_btn.Name = "res_back_btn";
             res_back_btn.Size = new Size(93, 33);
             res_back_btn.TabIndex = 11;
-            res_back_btn.Text = "Go Back";
+            res_back_btn.Text = "Back";
             res_back_btn.UseVisualStyleBackColor = false;
+            res_back_btn.Click += res_back_btn_Click;
             // 
             // ResturantProfile
             // 

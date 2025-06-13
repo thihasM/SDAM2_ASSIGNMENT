@@ -31,5 +31,12 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
 
         }
+
+        private void Back_btn_Click(object sender, EventArgs e)
+        {
+            Customerinterface customerinterface = new Customerinterface();
+            customerinterface.Show();
+            this.Close();
+        }
     }
 }

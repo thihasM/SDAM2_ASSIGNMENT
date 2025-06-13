@@ -84,12 +84,16 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void profile_btn_Click(object sender, EventArgs e)
         {
-
+            CustomerProfile customerProfile = new CustomerProfile();
+            customerProfile.Show();
+            this.Close();
         }
 
         private void order_btn_Click(object sender, EventArgs e)
         {
-
+            cartpage cartPage = new cartpage();
+            cartPage.Show();
+            this.Close();
         }
     }
 }

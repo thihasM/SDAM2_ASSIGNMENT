@@ -31,5 +31,12 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
 
         }
+
+        private void placeorder_btn_Click(object sender, EventArgs e)
+        {
+            trackoder trackOrder = new trackoder();
+            trackOrder.Show();
+            this.Close();
+        }
     }
 }

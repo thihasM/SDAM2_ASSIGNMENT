@@ -32,7 +32,7 @@
             lblAddress = new Label();
             menu_items = new ListBox();
             gobck_btn = new Button();
-            plc_odr_btn = new Button();
+            cart_btn = new Button();
             cus_profile_btn = new Button();
             pictureBox1 = new PictureBox();
             label4 = new Label();
@@ -83,19 +83,19 @@
             gobck_btn.UseVisualStyleBackColor = false;
             gobck_btn.Click += gobck_btn_Click;
             // 
-            // plc_odr_btn
+            // cart_btn
             // 
-            plc_odr_btn.BackColor = Color.Black;
-            plc_odr_btn.FlatStyle = FlatStyle.Popup;
-            plc_odr_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            plc_odr_btn.ForeColor = SystemColors.Control;
-            plc_odr_btn.Location = new Point(192, 394);
-            plc_odr_btn.Name = "plc_odr_btn";
-            plc_odr_btn.Size = new Size(141, 29);
-            plc_odr_btn.TabIndex = 4;
-            plc_odr_btn.Text = "Place Order";
-            plc_odr_btn.UseVisualStyleBackColor = false;
-            plc_odr_btn.Click += plc_odr_btn_Click;
+            cart_btn.BackColor = Color.Black;
+            cart_btn.FlatStyle = FlatStyle.Popup;
+            cart_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cart_btn.ForeColor = SystemColors.Control;
+            cart_btn.Location = new Point(174, 394);
+            cart_btn.Name = "cart_btn";
+            cart_btn.Size = new Size(141, 29);
+            cart_btn.TabIndex = 4;
+            cart_btn.Text = "Cart";
+            cart_btn.UseVisualStyleBackColor = false;
+            cart_btn.Click += plc_odr_btn_Click;
             // 
             // cus_profile_btn
             // 
@@ -103,11 +103,11 @@
             cus_profile_btn.FlatStyle = FlatStyle.Popup;
             cus_profile_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cus_profile_btn.ForeColor = SystemColors.Control;
-            cus_profile_btn.Location = new Point(440, 394);
+            cus_profile_btn.Location = new Point(413, 394);
             cus_profile_btn.Name = "cus_profile_btn";
-            cus_profile_btn.Size = new Size(94, 29);
+            cus_profile_btn.Size = new Size(141, 29);
             cus_profile_btn.TabIndex = 5;
-            cus_profile_btn.Text = "Profile";
+            cus_profile_btn.Text = "Review";
             cus_profile_btn.UseVisualStyleBackColor = false;
             cus_profile_btn.Click += cus_profile_btn_Click;
             // 
@@ -141,7 +141,7 @@
             Controls.Add(label4);
             Controls.Add(pictureBox1);
             Controls.Add(cus_profile_btn);
-            Controls.Add(plc_odr_btn);
+            Controls.Add(cart_btn);
             Controls.Add(gobck_btn);
             Controls.Add(menu_items);
             Controls.Add(lblAddress);
@@ -160,7 +160,7 @@
         private Label lblAddress;
         private ListBox menu_items;
         private Button gobck_btn;
-        private Button plc_odr_btn;
+        private Button cart_btn;
         private Button cus_profile_btn;
         private PictureBox pictureBox1;
         private Label label4;

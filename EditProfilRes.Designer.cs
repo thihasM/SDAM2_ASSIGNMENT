@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            res_name_edit_textbox = new TextBox();
-            label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             res_phone_number_edit_textbox = new TextBox();
@@ -44,24 +42,6 @@
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // res_name_edit_textbox
-            // 
-            res_name_edit_textbox.Location = new Point(167, 156);
-            res_name_edit_textbox.Name = "res_name_edit_textbox";
-            res_name_edit_textbox.PlaceholderText = "Enter Your Name";
-            res_name_edit_textbox.Size = new Size(476, 27);
-            res_name_edit_textbox.TabIndex = 4;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(167, 133);
-            label1.Name = "label1";
-            label1.Size = new Size(56, 22);
-            label1.TabIndex = 5;
-            label1.Text = "Name";
             // 
             // label2
             // 
@@ -78,7 +58,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F);
-            label3.Location = new Point(167, 203);
+            label3.Location = new Point(167, 162);
             label3.Name = "label3";
             label3.Size = new Size(126, 22);
             label3.TabIndex = 8;
@@ -87,7 +67,7 @@
             // 
             // res_phone_number_edit_textbox
             // 
-            res_phone_number_edit_textbox.Location = new Point(167, 226);
+            res_phone_number_edit_textbox.Location = new Point(167, 185);
             res_phone_number_edit_textbox.Name = "res_phone_number_edit_textbox";
             res_phone_number_edit_textbox.PlaceholderText = "Enter Your Phone Number";
             res_phone_number_edit_textbox.Size = new Size(476, 27);
@@ -97,7 +77,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 12F);
-            label4.Location = new Point(167, 271);
+            label4.Location = new Point(167, 230);
             label4.Name = "label4";
             label4.Size = new Size(57, 22);
             label4.TabIndex = 10;
@@ -105,7 +85,7 @@
             // 
             // res_email
             // 
-            res_email.Location = new Point(167, 294);
+            res_email.Location = new Point(167, 253);
             res_email.Name = "res_email";
             res_email.PlaceholderText = "Enter Your Email Address";
             res_email.Size = new Size(476, 27);
@@ -115,7 +95,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 12F);
-            label5.Location = new Point(167, 335);
+            label5.Location = new Point(167, 294);
             label5.Name = "label5";
             label5.Size = new Size(76, 22);
             label5.TabIndex = 12;
@@ -123,7 +103,7 @@
             // 
             // res_address
             // 
-            res_address.Location = new Point(167, 358);
+            res_address.Location = new Point(167, 317);
             res_address.Name = "res_address";
             res_address.PlaceholderText = "Enter Your Address";
             res_address.Size = new Size(476, 27);
@@ -135,7 +115,7 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(549, 414);
+            button1.Location = new Point(549, 395);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 17;
@@ -149,12 +129,13 @@
             button2.FlatStyle = FlatStyle.Popup;
             button2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(438, 414);
+            button2.Location = new Point(438, 395);
             button2.Name = "button2";
             button2.Size = new Size(94, 29);
             button2.TabIndex = 18;
             button2.Text = "Back";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label6
             // 
@@ -204,8 +185,6 @@
             Controls.Add(label3);
             Controls.Add(res_phone_number_edit_textbox);
             Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(res_name_edit_textbox);
             Name = "EditProfilRes";
             Text = "EditProfilRes";
             Load += EditProfilRes_Load;
@@ -215,8 +194,6 @@
         }
 
         #endregion
-        private TextBox res_name_edit_textbox;
-        private Label label1;
         private Label label2;
         private Label label3;
         private TextBox res_phone_number_edit_textbox;
