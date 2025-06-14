@@ -14,9 +14,20 @@ namespace LOGIN_SDAM_ASSIGNMENT
     public partial class Customerinterface : Form
     {
         private bool isListBoxLoaded = false;
+        private int _userId;
         public Customerinterface()
         {
             InitializeComponent();
+            var currentUser = UserManager.GetCurrentUser();
+            if (currentUser != null)
+            {
+                _userId = currentUser.UserId;
+            }
+            else
+            {
+                MessageBox.Show("No user is logged in.");
+                this.Close();
+            }
         }
 
         private void Customerinterface_Load(object sender, EventArgs e)
@@ -84,14 +95,14 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void profile_btn_Click(object sender, EventArgs e)
         {
-            CustomerProfile customerProfile = new CustomerProfile();
+            CustomerProfile customerProfile = new CustomerProfile(_userId);
             customerProfile.Show();
             this.Close();
         }
 
         private void order_btn_Click(object sender, EventArgs e)
         {
-            cartpage cartPage = new cartpage();
+            cartpage cartPage = new cartpage(_userId);
             cartPage.Show();
             this.Close();
         }

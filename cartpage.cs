@@ -12,10 +12,11 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class cartpage : Form
     {
-        public cartpage()
+        private int _userId;
+        public cartpage(int userId)
         {
             InitializeComponent();
-
+            _userId = userId;
         }
 
         private void cartpage_Load(object sender, EventArgs e)
@@ -25,7 +26,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void payment_btn_Click(object sender, EventArgs e)
         {
-            Payment payment = new Payment();
+            Payment payment = new Payment(_userId);
             payment.Show();
             this.Close();
         }
@@ -38,6 +39,11 @@ namespace LOGIN_SDAM_ASSIGNMENT
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cart_lb_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

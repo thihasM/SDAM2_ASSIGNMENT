@@ -14,6 +14,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class RestaurantPage : Form
     {
+        private int _userId;
         private Restaurant _restaurant;
         private List<MenuItem> cart = new List<MenuItem>();
         public RestaurantPage(Restaurant restaurant)
@@ -119,7 +120,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void plc_odr_btn_Click(object sender, EventArgs e)
         {
-            cartpage cartPage = new cartpage();
+            cartpage cartPage = new cartpage(_userId);
             cartPage.Show();
             this.Close();
         }
@@ -128,14 +129,24 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
             if (menu_items.SelectedItem is MenuItem selectedItem)
             {
-                
-                Cart.AddItem(
-                    selectedItem.ItemName,
-                    selectedItem.Price,
-                    _restaurant.RestaurantId
-                );
+                string? input = Microsoft.VisualBasic.Interaction.InputBox(
+                    $"Enter quantity for {selectedItem.ItemName}:", "Quantity", "1");
 
-                MessageBox.Show($"{selectedItem.ItemName} added to cart!");
+                if (int.TryParse(input, out int quantity) && quantity > 0)
+                {
+                    Cart.AddItem(
+                        selectedItem.ItemName,
+                        selectedItem.Price,
+                        _restaurant.RestaurantId,
+                        quantity
+                    );
+
+                    MessageBox.Show($"{quantity} x {selectedItem.ItemName} added to cart.");
+                }
+                else
+                {
+                    MessageBox.Show("Invalid quantity.");
+                }
             }
         }
 

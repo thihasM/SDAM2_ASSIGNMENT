@@ -9,10 +9,10 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public class CartItem
     {
-        public int RestaurantId { get; set; }
-        public string FoodName { get; set; } = string.Empty;
+        public string FoodName { get; set; } = "";
         public decimal Price { get; set; }
         public int Quantity { get; set; }
+        public int RestaurantId { get; set; }
 
         public override string ToString()
         {
@@ -25,27 +25,26 @@ namespace LOGIN_SDAM_ASSIGNMENT
         public static List<CartItem> Items { get; } = new List<CartItem>();
         public static int CurrentRestaurantId { get; set; } = -1;
 
-        public static void AddItem(string foodName, decimal price, int restaurantId)
+        public static void AddItem(string itemName, decimal price, int restaurantId, int quantity)
         {
-            // Reset cart if switching restaurants
             if (CurrentRestaurantId != restaurantId)
             {
                 Items.Clear();
                 CurrentRestaurantId = restaurantId;
             }
 
-            var existingItem = Items.Find(item => item.FoodName == foodName);
+            var existingItem = Items.Find(item => item.FoodName == itemName);
             if (existingItem != null)
             {
-                existingItem.Quantity++;
+                existingItem.Quantity += quantity;
             }
             else
             {
                 Items.Add(new CartItem
                 {
-                    FoodName = foodName,
+                    FoodName = itemName,
                     Price = price,
-                    Quantity = 1,
+                    Quantity = quantity,
                     RestaurantId = restaurantId
                 });
             }

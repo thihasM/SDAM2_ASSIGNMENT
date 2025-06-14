@@ -101,6 +101,7 @@
             cart_lb.Name = "cart_lb";
             cart_lb.Size = new Size(423, 184);
             cart_lb.TabIndex = 45;
+            cart_lb.SelectedIndexChanged += cart_lb_SelectedIndexChanged;
             // 
             // label2
             // 

@@ -143,6 +143,7 @@
             Controls.Add(cus_edit_btn);
             Name = "CustomerProfile";
             Text = "CustomerProfile";
+            Load += CustomerProfile_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

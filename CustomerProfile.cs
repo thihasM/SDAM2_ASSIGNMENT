@@ -12,14 +12,16 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class CustomerProfile : Form
     {
-        public CustomerProfile()
+        private int _userId;
+        public CustomerProfile(int userId)
         {
             InitializeComponent();
+            _userId = userId;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EditProfileCus editProfileCus = new EditProfileCus();
+            EditProfileCus editProfileCus = new EditProfileCus(_userId);
             editProfileCus.Show();
             this.Close();
         }
@@ -33,9 +35,14 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void Trck_ord_btn_Click(object sender, EventArgs e)
         {
-            trackoder trackOrder = new trackoder();
+            trackoder trackOrder = new trackoder(_userId);
             trackOrder.Show();
             this.Close();
+        }
+
+        private void CustomerProfile_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

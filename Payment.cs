@@ -12,9 +12,11 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class Payment : Form
     {
-        public Payment()
+        private int _userId;
+        public Payment(int userId)
         {
             InitializeComponent();
+            _userId = userId;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -34,7 +36,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void placeorder_btn_Click(object sender, EventArgs e)
         {
-            trackoder trackOrder = new trackoder();
+            trackoder trackOrder = new trackoder(_userId);
             trackOrder.Show();
             this.Close();
         }

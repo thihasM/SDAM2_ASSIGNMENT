@@ -12,9 +12,11 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class trackoder : Form
     {
-        public trackoder()
+        private int _userId;
+        public trackoder(int userId)
         {
             InitializeComponent();
+            _userId = userId;
         }
 
         private void label3_Click(object sender, EventArgs e)

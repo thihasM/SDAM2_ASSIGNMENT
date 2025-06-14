@@ -12,9 +12,11 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class EditProfileCus : Form
     {
-        public EditProfileCus()
+        private int _userId;
+        public EditProfileCus(int userId)
         {
             InitializeComponent();
+            _userId = userId;
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -24,9 +26,14 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void user_back_btn_Click(object sender, EventArgs e)
         {
-            CustomerProfile profile = new CustomerProfile();
+            CustomerProfile profile = new CustomerProfile(_userId);
             profile.Show();
             this.Close();
+        }
+
+        private void EditProfileCus_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

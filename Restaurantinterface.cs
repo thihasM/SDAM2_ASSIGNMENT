@@ -34,21 +34,16 @@ namespace LOGIN_SDAM_ASSIGNMENT
             {
                 using (var db = new DatabaseHelper())
                 {
-                    // Debug: Show the user ID being used
-                    Console.WriteLine($"Loading data for user ID: {_userId}");
 
                     var restaurant = db.GetRestaurantByUserId(_userId);
 
                     if (restaurant != null)
-                    {
-                        // Debug: Show what we got from database
-                        Console.WriteLine($"Found restaurant: {restaurant.Name}");
+                    {;
 
                         lblRestaurantName.Text = restaurant.Name;
 
-                        // Force immediate UI update
                         lblRestaurantName.Refresh();
-                        Application.DoEvents();
+                        //Application.DoEvents();
                     }
                     else
                     {

@@ -208,6 +208,7 @@
             Controls.Add(label2);
             Name = "EditProfileCus";
             Text = "EditProfileCus";
+            Load += EditProfileCus_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
