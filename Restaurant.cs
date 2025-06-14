@@ -12,6 +12,10 @@ namespace LOGIN_SDAM_ASSIGNMENT
         public int RestaurantId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+        public int UserId { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Username { get; set; }
 
         public override string ToString()
         {

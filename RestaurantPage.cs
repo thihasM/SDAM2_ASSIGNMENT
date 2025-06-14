@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace LOGIN_SDAM_ASSIGNMENT
 {
@@ -24,6 +25,34 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
             LoadMenuItems();
         }
+        private List<Restaurant> GetAllRestaurants()
+        {
+            List<Restaurant> restaurants = new List<Restaurant>();
+            DatabaseHelper db = new DatabaseHelper();
+
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                // Use correct column names from your database schema
+                string query = "SELECT res_id, name, address FROM restaurants";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        restaurants.Add(new Restaurant
+                        {
+                            // Map to correct database columns
+                            RestaurantId = reader.GetInt32("res_id"),
+                            Name = reader.GetString("name"),
+                            Address = reader.GetString("address")
+                        });
+                    }
+                }
+            }
+            return restaurants;
+        }
         private void LoadMenuItems()
         {
             List<MenuItem> menuItems = new List<MenuItem>();
@@ -32,20 +61,25 @@ namespace LOGIN_SDAM_ASSIGNMENT
             using (MySqlConnection conn = db.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT user_id, item_name, price FROM restaurant_menu WHERE restaurant_id = @user_id";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@id", _restaurant.RestaurantId);
+                string query = "SELECT menu_id, restaurant_id, item_name, price " +
+                      "FROM restaurant_menu WHERE restaurant_id = @restaurant_id";
 
-                using (MySqlDataReader reader = cmd.ExecuteReader())
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    while (reader.Read())
+                    cmd.Parameters.AddWithValue("@restaurant_id", _restaurant.RestaurantId);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        menuItems.Add(new MenuItem
+                        while (reader.Read())
                         {
-                            Id = reader.GetInt32("id"),
-                            ItemName = reader.GetString("item_name"),
-                            Price = reader.GetDecimal("price")
-                        });
+                            menuItems.Add(new MenuItem
+                            {
+                                Id = reader.GetInt32("menu_id"),  
+                                RestaurantId = reader.GetInt32("restaurant_id"),
+                                ItemName = reader.GetString("item_name"),
+                                Price = reader.GetDecimal("price")
+                            });
+                        }
                     }
                 }
                 conn.Close();
@@ -94,10 +128,16 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
             if (menu_items.SelectedItem is MenuItem selectedItem)
             {
-                cart.Add(selectedItem);
-                MessageBox.Show($"{selectedItem.ItemName} added to cart.");
+                
+                Cart.AddItem(
+                    selectedItem.ItemName,
+                    selectedItem.Price,
+                    _restaurant.RestaurantId
+                );
+
+                MessageBox.Show($"{selectedItem.ItemName} added to cart!");
             }
         }
-        
+
     }
 }

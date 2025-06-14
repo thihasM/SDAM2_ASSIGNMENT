@@ -43,7 +43,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
             using (MySqlConnection conn = db.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT id, name, address FROM restaurants";
+                string query = "SELECT res_id, name, address FROM restaurants";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
                 using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -52,7 +52,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
                     {
                         restaurants.Add(new Restaurant
                         {
-                            RestaurantId = reader.GetInt32("id"),
+                            RestaurantId = reader.GetInt32("res_id"),
                             Name = reader.GetString("name"),
                             Address = reader.GetString("address")
                         });

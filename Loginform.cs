@@ -52,7 +52,12 @@ namespace LOGIN_SDAM_ASSIGNMENT
                     {
                         if (reader.Read())
                         {
+                            int userId = Convert.ToInt32(reader["id"]);
                             string accountType = reader["account_type"].ToString().ToLower();
+
+                            // Set current user
+                            var loggedInUser = new User(userId, username, accountType);
+                            UserManager.SetCurrentUser(loggedInUser);
 
                             if (accountType == "customer")
                             {
