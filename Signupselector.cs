@@ -26,7 +26,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void sign_res_btn_Click(object sender, EventArgs e)
         {
-            Signupresform signupresform = new Signupresform();
+            Signupresform signupresform = new Signupresform(0);
             signupresform.Show();
             this.Close();
         }

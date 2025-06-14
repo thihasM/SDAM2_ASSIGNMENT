@@ -14,9 +14,12 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class Signupresform : Form
     {
-        public Signupresform()
+        private int _userId;
+
+        public Signupresform(int userId)
         {
             InitializeComponent();
+            _userId = userId;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -119,14 +122,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
                     cmdRest.Parameters.AddWithValue("@phone", phone);
                     cmdRest.Parameters.AddWithValue("@username", username);
 
-                    
-                    long resId = Convert.ToInt64(cmdRest.ExecuteScalar());
-
                     transaction.Commit();
-
-                    
-                    //CurrentSeesion.CurrentRestaurantId = resId; 
-
                     MessageBox.Show("Restaurant registration successful!");
                     Restaurantinterface restaurantInterface = new Restaurantinterface();
                     restaurantInterface.Show();

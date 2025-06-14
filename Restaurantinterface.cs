@@ -12,14 +12,61 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class Restaurantinterface : Form
     {
+        private int _userId;
         public Restaurantinterface()
         {
             InitializeComponent();
+            var currentUser = UserManager.GetCurrentUser();
+            if (currentUser != null)
+            {
+                _userId = currentUser.UserId;
+                LoadRestaurantData();
+            }
+            else
+            {
+                MessageBox.Show("No user is logged in.");
+                this.Close();
+            }
+        }
+        private void LoadRestaurantData()
+        {
+            try
+            {
+                using (var db = new DatabaseHelper())
+                {
+                    // Debug: Show the user ID being used
+                    Console.WriteLine($"Loading data for user ID: {_userId}");
+
+                    var restaurant = db.GetRestaurantByUserId(_userId);
+
+                    if (restaurant != null)
+                    {
+                        // Debug: Show what we got from database
+                        Console.WriteLine($"Found restaurant: {restaurant.Name}");
+
+                        lblRestaurantName.Text = restaurant.Name;
+
+                        // Force immediate UI update
+                        lblRestaurantName.Refresh();
+                        Application.DoEvents();
+                    }
+                    else
+                    {
+                        Console.WriteLine("No restaurant found for this user");
+                        lblRestaurantName.Text = "Restaurant not found";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading data: {ex.Message}");
+                lblRestaurantName.Text = "Error loading data";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ResturantProfile profile = new ResturantProfile();
+            ResturantProfile profile = new ResturantProfile(_userId);
             profile.Show();
             this.Close();
         }

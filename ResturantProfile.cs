@@ -13,11 +13,28 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class ResturantProfile : Form
     {
-        public ResturantProfile()
+        private int _userId;
+        public ResturantProfile(int userId)
         {
             InitializeComponent();
+            _userId = userId;
+            LoadRestaurantData();
         }
-
+        private void LoadRestaurantData()
+        {
+            // Use _userId to load the specific restaurant's data
+            // Example:
+            using (var db = new DatabaseHelper())
+            {
+                var restaurant = db.GetRestaurantByUserId(_userId);
+                if (restaurant != null)
+                {
+                    // Populate your form controls
+                    lblRestaurantName.Text = restaurant.Name;
+                    // ... etc ...
+                }
+            }
+        }
         private void ResturantProfile_Load(object sender, EventArgs e)
         {
 
@@ -30,7 +47,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void res_edit_food_menu_btn_Click(object sender, EventArgs e)
         {
-            menueditpage menuEditPage = new menueditpage();
+            menueditpage menuEditPage = new menueditpage(_userId);
             menuEditPage.Show();
             this.Close();
         }
@@ -114,7 +131,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void res_edit_btn_Click(object sender, EventArgs e)
         {
-            EditProfilRes editProfilRes = new EditProfilRes();
+            EditProfilRes editProfilRes = new EditProfilRes(_userId);
             editProfilRes.Show();
             this.Close();
         }

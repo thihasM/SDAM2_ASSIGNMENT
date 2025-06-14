@@ -14,24 +14,27 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class menueditpage : Form
     {
+        private int _userId;
         private int restaurantId;
         private DatabaseHelper db = new DatabaseHelper();
         private MenuItem selectedMenuItem;
         public menueditpage(int userId)
         {
             InitializeComponent();
+            _userId = userId;
 
             // Get restaurant by user ID
-            Restaurant restaurant = GetRestaurantByUserId(userId);
+            Restaurant restaurant = GetRestaurantByUserId(_userId);
 
             if (restaurant != null)
             {
                 restaurantId = restaurant.RestaurantId;
+                lblRestaurantName.Text = $"Restaurant: {restaurantId}";
                 LoadMenuItems();
             }
             else
             {
-                MessageBox.Show("Restaurant not found!"); 
+                MessageBox.Show("Restaurant not found!");
                 this.Close();
             }
         }
@@ -43,7 +46,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void bck_btn_Click(object sender, EventArgs e)
         {
-            ResturantProfile resturantProfile = new ResturantProfile();
+            ResturantProfile resturantProfile = new ResturantProfile(_userId);
             resturantProfile.Show();
             this.Close();
         }
@@ -157,8 +160,8 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 upd_itm_btn.Enabled = true;
             }
         }
-        
-        
+
+
         private void add_item_btn_Click(object sender, EventArgs e)
         {
         }
@@ -196,10 +199,10 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void AddMenuItem(string itemName, decimal price)
         {
-            
-            int currentRestaurantId = restaurantId; 
 
-            using (MySqlConnection conn = db.GetConnection())  
+            int currentRestaurantId = restaurantId;
+
+            using (MySqlConnection conn = db.GetConnection())
             {
                 conn.Open();
 
@@ -305,6 +308,10 @@ namespace LOGIN_SDAM_ASSIGNMENT
             return null;
         }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -4,10 +4,10 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class Handiyen : Form
     {
+        private int _userId;
         public Handiyen()
         {
             InitializeComponent();
-
         }
 
         private void Sign_up_btn_Click(object sender, EventArgs e)

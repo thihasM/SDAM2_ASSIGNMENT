@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class EditProfilRes : Form
     {
-        public EditProfilRes()
+        private int _userId;
+        public EditProfilRes(int userId)
         {
             InitializeComponent();
+            _userId = userId;
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -49,7 +52,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ResturantProfile resturantProfile = new ResturantProfile();
+            ResturantProfile resturantProfile = new ResturantProfile(_userId);
             resturantProfile.Show();
             this.Close();
         }

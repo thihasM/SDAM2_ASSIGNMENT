@@ -36,6 +36,7 @@
             label4 = new Label();
             pictureBox1 = new PictureBox();
             res_back_btn = new Button();
+            lblRestaurantName = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -144,12 +145,22 @@
             res_back_btn.UseVisualStyleBackColor = false;
             res_back_btn.Click += res_back_btn_Click;
             // 
+            // lblRestaurantName
+            // 
+            lblRestaurantName.AutoSize = true;
+            lblRestaurantName.Location = new Point(149, 19);
+            lblRestaurantName.Name = "lblRestaurantName";
+            lblRestaurantName.Size = new Size(50, 20);
+            lblRestaurantName.TabIndex = 12;
+            lblRestaurantName.Text = "label1";
+            // 
             // ResturantProfile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblRestaurantName);
             Controls.Add(res_back_btn);
             Controls.Add(pictureBox1);
             Controls.Add(label4);
@@ -176,5 +187,6 @@
         private Label label4;
         private PictureBox pictureBox1;
         private Button res_back_btn;
+        private Label lblRestaurantName;
     }
 }
