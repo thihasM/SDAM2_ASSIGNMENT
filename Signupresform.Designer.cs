@@ -266,6 +266,7 @@
             Controls.Add(label1);
             Name = "Signupresform";
             Text = "Signupresform";
+            Load += Signupresform_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

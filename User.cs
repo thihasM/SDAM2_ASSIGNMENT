@@ -10,13 +10,9 @@ namespace LOGIN_SDAM_ASSIGNMENT
     {
         public int UserId { get; set; }
         public string Username { get; set; }
-        public string AccountType { get; set; }
-
-        public User(int userId, string username, string accountType)
-        {
-            UserId = userId;
-            Username = username;
-            AccountType = accountType;
-        }
+        public string Name { get; set; }
+        public string AccountType { get; set; } // "Customer" or "Restaurant"
+        public int? RestaurantId { get; set; }
     }
 }
+

@@ -46,7 +46,9 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void edit_menu_btn_Click(object sender, EventArgs e)
         {
-            
+            Handiyen handiyen = new Handiyen();
+            handiyen.Show();
+            this.Close();
         }
     }
 }

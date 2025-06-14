@@ -91,10 +91,10 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
                 try
                 {
-                    // pushing data into users table in database:
+                    // Pushing data into users table
                     string insertUserQuery = @"
-            INSERT INTO users (username, password, name, account_type)
-            VALUES (@username, @password, @name, @account_type)";
+                        INSERT INTO users (username, password, name, account_type)
+                        VALUES (@username, @password, @name, @account_type)";
 
                     MySqlCommand cmdUser = new MySqlCommand(insertUserQuery, conn, transaction);
                     cmdUser.Parameters.AddWithValue("@username", username);
@@ -105,10 +105,11 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
                     long userId = cmdUser.LastInsertedId;
 
-                    // pushing data into restaurants table in database:
+                    // Pushing data into restaurants table AND GETTING RES_ID
                     string insertRestaurantQuery = @"
-            INSERT INTO restaurants (user_id, name, address, email, phone, username)
-            VALUES (@user_id, @name, @address, @email, @phone, @username)";
+                        INSERT INTO restaurants (user_id, name, address, email, phone, username)
+                        VALUES (@user_id, @name, @address, @email, @phone, @username);
+                        SELECT LAST_INSERT_ID();";
 
                     MySqlCommand cmdRest = new MySqlCommand(insertRestaurantQuery, conn, transaction);
                     cmdRest.Parameters.AddWithValue("@user_id", userId);
@@ -117,21 +118,35 @@ namespace LOGIN_SDAM_ASSIGNMENT
                     cmdRest.Parameters.AddWithValue("@email", email);
                     cmdRest.Parameters.AddWithValue("@phone", phone);
                     cmdRest.Parameters.AddWithValue("@username", username);
-                    cmdRest.ExecuteNonQuery();
+
+                    
+                    long resId = Convert.ToInt64(cmdRest.ExecuteScalar());
 
                     transaction.Commit();
 
+                    
+                    //CurrentSeesion.CurrentRestaurantId = resId; 
+
                     MessageBox.Show("Restaurant registration successful!");
-                    Signupselector signupselector = new Signupselector();
-                    signupselector.Show();
+                    Restaurantinterface restaurantInterface = new Restaurantinterface();
+                    restaurantInterface.Show();
                     this.Close();
                 }
                 catch (Exception ex)
                 {
                     transaction.Rollback();
-                    MessageBox.Show("An error occurred: " + ex.Message);
+                    MessageBox.Show("An error occurred during registration: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
                 }
             }
+        }
+
+        private void Signupresform_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -38,6 +38,7 @@
             menu_edit_lb = new ListBox();
             label4 = new Label();
             pictureBox1 = new PictureBox();
+            upd_itm_btn = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(266, 317);
+            button1.Location = new Point(127, 318);
             button1.Name = "button1";
             button1.Size = new Size(134, 30);
             button1.TabIndex = 0;
@@ -111,11 +112,11 @@
             menu_delete_btn.FlatStyle = FlatStyle.Popup;
             menu_delete_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             menu_delete_btn.ForeColor = Color.White;
-            menu_delete_btn.Location = new Point(266, 359);
+            menu_delete_btn.Location = new Point(127, 408);
             menu_delete_btn.Name = "menu_delete_btn";
             menu_delete_btn.Size = new Size(134, 30);
             menu_delete_btn.TabIndex = 6;
-            menu_delete_btn.Text = "Delete Menu";
+            menu_delete_btn.Text = "Delete Item";
             menu_delete_btn.UseVisualStyleBackColor = false;
             menu_delete_btn.Click += menu_delete_btn_Click;
             // 
@@ -150,12 +151,27 @@
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
+            // upd_itm_btn
+            // 
+            upd_itm_btn.BackColor = Color.Black;
+            upd_itm_btn.FlatStyle = FlatStyle.Popup;
+            upd_itm_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            upd_itm_btn.ForeColor = Color.White;
+            upd_itm_btn.Location = new Point(127, 362);
+            upd_itm_btn.Name = "upd_itm_btn";
+            upd_itm_btn.Size = new Size(134, 30);
+            upd_itm_btn.TabIndex = 11;
+            upd_itm_btn.Text = "Update Item";
+            upd_itm_btn.UseVisualStyleBackColor = false;
+            upd_itm_btn.Click += upd_itm_btn_Click;
+            // 
             // menueditpage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(800, 450);
+            Controls.Add(upd_itm_btn);
             Controls.Add(pictureBox1);
             Controls.Add(label4);
             Controls.Add(menu_edit_lb);
@@ -186,5 +202,6 @@
         private ListBox menu_edit_lb;
         private Label label4;
         private PictureBox pictureBox1;
+        private Button upd_itm_btn;
     }
 }

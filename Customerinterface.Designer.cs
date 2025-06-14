@@ -92,7 +92,7 @@
             profile_btn.Name = "profile_btn";
             profile_btn.Size = new Size(124, 42);
             profile_btn.TabIndex = 34;
-            profile_btn.Text = "Reviews";
+            profile_btn.Text = "Profile";
             profile_btn.UseVisualStyleBackColor = false;
             profile_btn.Click += profile_btn_Click;
             // 

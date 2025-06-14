@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,54 +34,145 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void login_btn_Click(object sender, EventArgs e)
         {
-            string username = log_usen_txtb.Text;
-            string password = log_pass_txtb.Text;
+            string username = log_usen_txtb.Text.Trim();
+            string password = log_pass_txtb.Text.Trim();
 
-            DatabaseHelper db = new DatabaseHelper();
+            User authenticatedUser = ValidateLogin(username, password);
 
-            using (MySqlConnection conn = db.GetConnection())
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                conn.Open();
-                string query = "SELECT * FROM users WHERE username = @username AND password = @password";
-
-                using (var cmd = new MySqlCommand(query, conn))
+                MessageBox.Show("Please enter both username and password");
+                return;
+            }
+            if (authenticatedUser != null)
+            {
+                if (authenticatedUser.AccountType == "Restaurant")
                 {
-                    cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
-
-                    using (var reader = cmd.ExecuteReader())
+                    Restaurant restaurant = GetRestaurantByUserId(authenticatedUser.UserId);
+                    if (restaurant != null)
                     {
-                        if (reader.Read())
-                        {
-                            int userId = Convert.ToInt32(reader["id"]);
-                            string accountType = reader["account_type"].ToString().ToLower();
-
-                            // Set current user
-                            var loggedInUser = new User(userId, username, accountType);
-                            UserManager.SetCurrentUser(loggedInUser);
-
-                            if (accountType == "customer")
-                            {
-                                Customerinterface customerInterface = new Customerinterface();
-                                customerInterface.Show();
-                            }
-                            else if (accountType == "restaurant")
-                            {
-                                Restaurantinterface restaurantInterface = new Restaurantinterface();
-                                restaurantInterface.Show();
-                            }
-
-                            this.Hide(); 
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid login.");
-                        }
-
+                        authenticatedUser.RestaurantId = restaurant.RestaurantId;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Restaurant profile not found");
+                        return;
                     }
                 }
+
+                // cur user set
+                UserManager.SetCurrentUser(authenticatedUser);
+
+                // Redir
+                if (authenticatedUser.AccountType == "Restaurant")
+                {
+                    Restaurantinterface restaurantInterface = new Restaurantinterface();
+                    restaurantInterface.Show();
+                }
+                else
+                {
+                    Customerinterface customerInterface = new Customerinterface();
+                    customerInterface.Show();
+                }
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password");
+            }
+        }
+        private User ValidateLogin(string username, string password)
+        {
+            // Input validation
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Username and password cannot be empty");
+                return null;
             }
 
+            try
+            {
+                using (var db = new DatabaseHelper())
+                using (var conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    string query = @"SELECT id, username, name, account_type, password 
+                           FROM users 
+                           WHERE username = @username";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                if (password == reader.GetString("password"))
+                                {
+                                    return new User
+                                    {
+                                        UserId = reader.GetInt32("id"),
+                                        Username = reader.GetString("username"),
+                                        Name = reader.GetString("name"),
+                                        AccountType = reader.GetString("account_type")
+                                    };
+                                }
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Login error: {ex.Message}");
+                return null;
+            }
+        }
+        private Restaurant GetRestaurantByUserId(int userId)
+        {
+            try
+            {
+                using (var db = new DatabaseHelper())
+                using (var conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    string query = @"SELECT res_id, name, address, email, phone, username 
+                            FROM restaurants 
+                            WHERE user_id = @user_id";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@user_id", userId);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return new Restaurant
+                                {
+                                    RestaurantId = reader.GetInt32("res_id"),
+                                    UserId = userId,
+                                    Name = reader.GetString("name"),
+                                    Address = reader.GetString("address"),
+                                    Email = reader.IsDBNull("email") ? null : reader.GetString("email"),
+                                    Phone = reader.IsDBNull("phone") ? null : reader.GetString("phone"),
+                                    Username = reader.IsDBNull("username") ? null : reader.GetString("username")
+                                };
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching restaurant: {ex.Message}");
+                return null;
+            }
         }
     }
 }

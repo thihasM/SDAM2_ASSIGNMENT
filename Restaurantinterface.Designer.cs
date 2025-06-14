@@ -82,7 +82,7 @@
             edit_menu_btn.Name = "edit_menu_btn";
             edit_menu_btn.Size = new Size(122, 34);
             edit_menu_btn.TabIndex = 6;
-            edit_menu_btn.Text = "Edit Menu";
+            edit_menu_btn.Text = "Sign Out";
             edit_menu_btn.UseVisualStyleBackColor = false;
             edit_menu_btn.Click += edit_menu_btn_Click;
             // 

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +14,26 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class menueditpage : Form
     {
-        private Restaurant _restaurant;
-        public menueditpage(Restaurant restaurant)
+        private int restaurantId;
+        private DatabaseHelper db = new DatabaseHelper();
+        private MenuItem selectedMenuItem;
+        public menueditpage(int userId)
         {
             InitializeComponent();
-            _restaurant = restaurant;
-            LoadMenuItems();
 
-            menu_edit_lb.SelectedIndexChanged += menu_edit_lb_SelectedIndexChanged;
+            // Get restaurant by user ID
+            Restaurant restaurant = GetRestaurantByUserId(userId);
+
+            if (restaurant != null)
+            {
+                restaurantId = restaurant.RestaurantId;
+                LoadMenuItems();
+            }
+            else
+            {
+                MessageBox.Show("Restaurant not found!"); 
+                this.Close();
+            }
         }
 
         public menueditpage()
@@ -34,37 +47,79 @@ namespace LOGIN_SDAM_ASSIGNMENT
             resturantProfile.Show();
             this.Close();
         }
+        private void ClearInputs()
+        {
+            Itm_name_input_txt.Text = "";
+            Itm_price_input_txt.Text = "";
+            selectedMenuItem = null;
+        }
 
         private void menu_delete_btn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-               "Are you sure you want to delete the entire menu for this restaurant?",
-               "Confirm Delete",
-               MessageBoxButtons.OKCancel,
-               MessageBoxIcon.Warning);
-
-            if (result == DialogResult.OK)
+            if (selectedMenuItem != null)
             {
-                DeleteMenuForRestaurant(_restaurant.RestaurantId);
-                LoadMenuItems();
-                MessageBox.Show("Menu deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var confirmResult = MessageBox.Show($"Delete '{selectedMenuItem.ItemName}'?",
+                                                  "Confirm Delete",
+                                                  MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    DeleteMenuItem(selectedMenuItem.Id);
+                    LoadMenuItems();
+                    ClearInputs();
+                    menu_delete_btn.Enabled = false;
+                    upd_itm_btn.Enabled = false;
+                }
             }
 
+        }
+        private void DeleteMenuItem(int menuId)
+        {
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = "DELETE FROM restaurant_menu WHERE menu_id = @menu_id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@menu_id", menuId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            MessageBox.Show("Item deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void LoadMenuItems()
         {
-            try
-            {
-                List<MenuItem> menuItems = new List<MenuItem>();
-                DatabaseHelper db = new DatabaseHelper();
+            menu_edit_lb.Items.Clear();
+            List<MenuItem> menuItems = GetMenuItems();
 
-                using (MySqlConnection conn = db.GetConnection())
+            if (menuItems.Count == 0)
+            {
+                menu_edit_lb.Items.Add("No items to display");
+                menu_delete_btn.Enabled = false;
+                upd_itm_btn.Enabled = false;
+            }
+            else
+            {
+                foreach (var item in menuItems)
                 {
-                    conn.Open();
-                    string query = "SELECT id, item_name, price FROM restaurant_menu WHERE restaurant_id = @id";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", _restaurant.RestaurantId);
+                    menu_edit_lb.Items.Add($"{item.ItemName} - ${item.Price}");
+                }
+            }
+        }
+        private List<MenuItem> GetMenuItems()
+        {
+            List<MenuItem> menuItems = new List<MenuItem>();
+
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT menu_id, item_name, price " +
+                               "FROM restaurant_menu WHERE restaurant_id = @restaurant_id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@restaurant_id", restaurantId);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -72,139 +127,40 @@ namespace LOGIN_SDAM_ASSIGNMENT
                         {
                             menuItems.Add(new MenuItem
                             {
-                                Id = reader.GetInt32("id"),
+                                Id = reader.GetInt32("menu_id"),
+                                RestaurantId = restaurantId,
                                 ItemName = reader.GetString("item_name"),
                                 Price = reader.GetDecimal("price")
                             });
                         }
                     }
-
-                    conn.Close();
-                }
-
-                menu_edit_lb.DataSource = null;
-
-                if (menuItems.Count == 0)
-                {
-                    MessageBox.Show("There are no menu items currently available.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    menu_edit_lb.DataSource = menuItems;
-                    menu_edit_lb.DisplayMember = "ItemName";
-                    menu_edit_lb.ValueMember = "Id";
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading menu items: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            return menuItems;
         }
 
         private void menueditpage_Load(object sender, EventArgs e)
         {
-
+            LoadMenuItems();
         }
 
         private void menu_edit_lb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (menu_edit_lb.SelectedItem is MenuItem selectedItem)
-            {
-                DialogResult result = MessageBox.Show(
-                    $"Are you sure you want to delete '{selectedItem.ItemName}'?",
-                    "Confirm Delete",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
 
-                if (result == DialogResult.Yes)
-                {
-                    DeleteMenuItem(selectedItem.Id);
-                    LoadMenuItems();
-                    MessageBox.Show("Item deleted successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+            if (menu_edit_lb.SelectedIndex >= 0 &&
+                !menu_edit_lb.GetItemText(menu_edit_lb.SelectedItem).Contains("No items"))
+            {
+                selectedMenuItem = GetMenuItems()[menu_edit_lb.SelectedIndex];
+                Itm_name_input_txt.Text = selectedMenuItem.ItemName;
+                Itm_price_input_txt.Text = selectedMenuItem.Price.ToString();
+                menu_delete_btn.Enabled = true;
+                upd_itm_btn.Enabled = true;
             }
         }
-        private void DeleteMenuItem(int itemId)
-        {
-            try
-            {
-                DatabaseHelper db = new DatabaseHelper();
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-                    string query = "DELETE FROM restaurant_menu WHERE id = @id";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", itemId);
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error deleting item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void DeleteMenuForRestaurant(int restaurantId)
-        {
-            try
-            {
-                DatabaseHelper db = new DatabaseHelper();
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-                    string query = "DELETE FROM restaurant_menu WHERE restaurant_id = @id";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", restaurantId);
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error deleting menu: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
+        
         private void add_item_btn_Click(object sender, EventArgs e)
         {
-            string itemName = Itm_name_input_txt.Text.Trim();
-            string priceText = Itm_price_input_txt.Text.Trim();
-
-            if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(priceText))
-            {
-                MessageBox.Show("Please enter both item name and price.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!decimal.TryParse(priceText, out decimal price))
-            {
-                MessageBox.Show("Invalid price format. Please enter a valid number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                DatabaseHelper db = new DatabaseHelper();
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-                    string query = "INSERT INTO restaurant_menu (restaurant_id, item_name, price) VALUES (@restId, @itemName, @price)";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@restId", _restaurant.RestaurantId);
-                    cmd.Parameters.AddWithValue("@itemName", itemName);
-                    cmd.Parameters.AddWithValue("@price", price);
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                }
-
-                MessageBox.Show("Item added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadMenuItems(); // Refresh ListBox
-                Itm_name_input_txt.Clear();
-                Itm_price_input_txt.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error adding item: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void Itm_name_input_txt_TextChanged(object sender, EventArgs e)
@@ -214,7 +170,141 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (ValidateInput())
+            {
+                AddMenuItem(Itm_name_input_txt.Text, decimal.Parse(Itm_price_input_txt.Text));
+                LoadMenuItems();
+                ClearInputs();
+            }
         }
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(Itm_name_input_txt.Text))
+            {
+                MessageBox.Show("Item name is required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!decimal.TryParse(Itm_price_input_txt.Text, out decimal price) || price <= 0)
+            {
+                MessageBox.Show("Please enter a valid price", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        private void AddMenuItem(string itemName, decimal price)
+        {
+            
+            int currentRestaurantId = restaurantId; 
+
+            using (MySqlConnection conn = db.GetConnection())  
+            {
+                conn.Open();
+
+                // 1. First verify restaurant exists
+                string checkQuery = "SELECT COUNT(*) FROM restaurants WHERE res_id = @res_id";
+                using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
+                {
+                    checkCmd.Parameters.AddWithValue("@res_id", currentRestaurantId);
+                    int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                    if (count == 0)
+                    {
+                        MessageBox.Show("Restaurant not registered! Please register the restaurant first.");
+                        return;
+                    }
+                }
+
+                // 2. Now insert the menu item
+                string insertQuery = @"INSERT INTO restaurant_menu (restaurant_id, item_name, price)
+                             VALUES (@restaurant_id, @item_name, @price)";
+
+                using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@restaurant_id", currentRestaurantId);
+                    cmd.Parameters.AddWithValue("@item_name", itemName);
+                    cmd.Parameters.AddWithValue("@price", price);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Item added successfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to add item");
+                    }
+                }
+            }
+        }
+
+        private void upd_itm_btn_Click(object sender, EventArgs e)
+        {
+            if (selectedMenuItem != null && ValidateInput())
+            {
+                UpdateMenuItem(selectedMenuItem.Id, Itm_name_input_txt.Text, decimal.Parse(Itm_price_input_txt.Text));
+                LoadMenuItems();
+                ClearInputs();
+                upd_itm_btn.Enabled = false;
+                menu_delete_btn.Enabled = false;
+            }
+        }
+        private void UpdateMenuItem(int menuId, string itemName, decimal price)
+        {
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = "UPDATE restaurant_menu SET item_name = @item_name, price = @price " +
+                               "WHERE menu_id = @menu_id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@item_name", itemName);
+                    cmd.Parameters.AddWithValue("@price", price);
+                    cmd.Parameters.AddWithValue("@menu_id", menuId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            MessageBox.Show("Item updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private Restaurant GetRestaurantByUserId(int userId)
+        {
+            DatabaseHelper db = new DatabaseHelper();
+
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT res_id, name, address, email, phone, username " +
+                              "FROM restaurants WHERE user_id = @user_id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Restaurant
+                            {
+                                RestaurantId = reader.GetInt32("res_id"),
+                                UserId = userId,
+                                Name = reader.GetString("name"),
+                                Address = reader.GetString("address"),
+                                Email = reader.IsDBNull("email") ? null : reader.GetString("email"),
+                                Phone = reader.IsDBNull("phone") ? null : reader.GetString("phone"),
+                                Username = reader.IsDBNull("username") ? null : reader.GetString("username")
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
     }
 }
+

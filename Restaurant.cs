@@ -9,41 +9,12 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public class Restaurant
     {
-        public int RestaurantId { get; set; }
+        public int RestaurantId { get; set; }  // Maps to res_id
+        public int UserId { get; set; }        // Maps to user_id
         public string Name { get; set; }
         public string Address { get; set; }
-        public int UserId { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Username { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
-        private void LoadRestaurants()
-        {
-            List<Restaurant> restaurants = new List<Restaurant>();
-
-            using (MySqlConnection conn = new MySqlConnection("your_connection_string"))
-            {
-                conn.Open();
-                string query = "SELECT id, name, address FROM restaurant"; // match your table & column names
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Restaurant r = new Restaurant
-                        {
-                            RestaurantId = reader.GetInt32("id"),
-                            Name = reader.GetString("name"),
-                            Address = reader.GetString("address")
-                        };
-                        restaurants.Add(r);
-                    }
-                }
-            }
-        }
     }
 }
