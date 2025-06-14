@@ -9,14 +9,14 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public class CartItem
     {
-        public string FoodName { get; set; } = "";
+        public string ItemName { get; set; } = "";
         public decimal Price { get; set; }
         public int Quantity { get; set; }
         public int RestaurantId { get; set; }
 
         public override string ToString()
         {
-            return $"{FoodName} - {Quantity} x {Price:C}";
+            return $"{ItemName} - {Quantity} x {Price:C}";
         }
     }
 
@@ -33,7 +33,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 CurrentRestaurantId = restaurantId;
             }
 
-            var existingItem = Items.Find(item => item.FoodName == itemName);
+            var existingItem = Items.Find(item => item.ItemName == itemName);
             if (existingItem != null)
             {
                 existingItem.Quantity += quantity;
@@ -42,7 +42,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
             {
                 Items.Add(new CartItem
                 {
-                    FoodName = itemName,
+                    ItemName = itemName,
                     Price = price,
                     Quantity = quantity,
                     RestaurantId = restaurantId

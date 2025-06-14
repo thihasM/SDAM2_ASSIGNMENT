@@ -15,7 +15,8 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         public override string ToString()
         {
-            return $"{ItemName} - ${Price}";
+            return $"{ItemName} - Rs. {Price}";
         }
+        public string DisplayText => $"{ItemName} - Rs. {Price}";
     }
 }

@@ -14,13 +14,16 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class RestaurantPage : Form
     {
+        private bool isMenuInitialized = false;
         private int _userId;
         private Restaurant _restaurant;
         private List<MenuItem> cart = new List<MenuItem>();
-        public RestaurantPage(Restaurant restaurant)
+        public RestaurantPage(Restaurant restaurant, int userId)
         {
             InitializeComponent();
             _restaurant = restaurant;
+            _userId = userId;
+
             lblName.Text = _restaurant.Name;
             lblAddress.Text = _restaurant.Address;
 
@@ -56,46 +59,41 @@ namespace LOGIN_SDAM_ASSIGNMENT
         }
         private void LoadMenuItems()
         {
-            List<MenuItem> menuItems = new List<MenuItem>();
-            DatabaseHelper db = new DatabaseHelper();
+            isMenuInitialized = false;
 
-            using (MySqlConnection conn = db.GetConnection())
+            var items = new List<MenuItem>();
+
+            using (var db = new DatabaseHelper())
+            using (var conn = db.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT menu_id, restaurant_id, item_name, price " +
-                      "FROM restaurant_menu WHERE restaurant_id = @restaurant_id";
+                var sql = @"SELECT menu_id, item_name, price
+                    FROM restaurant_menu
+                    WHERE restaurant_id = @id";
 
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                using (var cmd = new MySqlCommand(sql, conn))
                 {
-                    cmd.Parameters.AddWithValue("@restaurant_id", _restaurant.RestaurantId);
-
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    cmd.Parameters.AddWithValue("@id", _restaurant.RestaurantId);
+                    using (var rdr = cmd.ExecuteReader())
                     {
-                        while (reader.Read())
+                        while (rdr.Read())
                         {
-                            menuItems.Add(new MenuItem
+                            items.Add(new MenuItem
                             {
-                                Id = reader.GetInt32("menu_id"),  
-                                RestaurantId = reader.GetInt32("restaurant_id"),
-                                ItemName = reader.GetString("item_name"),
-                                Price = reader.GetDecimal("price")
+                                Id = rdr.GetInt32("menu_id"),
+                                RestaurantId = _restaurant.RestaurantId,
+                                ItemName = rdr.GetString("item_name"),
+                                Price = rdr.GetDecimal("price")
                             });
                         }
                     }
                 }
-                conn.Close();
             }
 
-            if (menuItems.Count == 0)
-            {
-                menu_items.DataSource = null;
-                MessageBox.Show("There are no menu items available for this restaurant.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                menu_items.DataSource = menuItems;
-                menu_items.DisplayMember = "ItemName";
-            }
+            menu_items.DataSource = items;
+            menu_items.DisplayMember = "DisplayText";
+
+            isMenuInitialized = true;
         }
 
         private void RestaurantPage_Load(object sender, EventArgs e)
@@ -120,16 +118,17 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void plc_odr_btn_Click(object sender, EventArgs e)
         {
-            cartpage cartPage = new cartpage(_userId);
-            cartPage.Show();
-            this.Close();
+            new cartpage(_userId).Show();
+            Close();
         }
 
         private void menu_items_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!isMenuInitialized) return;
+
             if (menu_items.SelectedItem is MenuItem selectedItem)
             {
-                string? input = Microsoft.VisualBasic.Interaction.InputBox(
+                string input = Microsoft.VisualBasic.Interaction.InputBox(
                     $"Enter quantity for {selectedItem.ItemName}:", "Quantity", "1");
 
                 if (int.TryParse(input, out int quantity) && quantity > 0)
@@ -147,6 +146,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 {
                     MessageBox.Show("Invalid quantity.");
                 }
+                menu_items.ClearSelected();
             }
         }
 

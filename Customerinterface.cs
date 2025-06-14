@@ -32,54 +32,59 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void Customerinterface_Load(object sender, EventArgs e)
         {
-            List<Restaurant> restaurants = GetAllRestaurants();
+            var restaurants = GetAllRestaurants();
 
             if (restaurants.Count == 0)
             {
-                MessageBox.Show("There are no restaurants currently available.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("There are no restaurants currently available.",
+                                "Notice",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+
                 customer_intf_lb.DataSource = null;
+                return;
             }
-            else
-            {
-                customer_intf_lb.DataSource = restaurants;
-                customer_intf_lb.DisplayMember = "Name";
-                isListBoxLoaded = true;
-            }
+
+            customer_intf_lb.DataSource = restaurants;
+            customer_intf_lb.DisplayMember = "Name";
+
+            isListBoxLoaded = true;
         }
         private List<Restaurant> GetAllRestaurants()
         {
-            List<Restaurant> restaurants = new List<Restaurant>();
-            DatabaseHelper db = new DatabaseHelper();
+            var list = new List<Restaurant>();
 
-            using (MySqlConnection conn = db.GetConnection())
+            using (var db = new DatabaseHelper())
+            using (var conn = db.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT res_id, name, address FROM restaurants";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
 
-                using (MySqlDataReader reader = cmd.ExecuteReader())
+                const string sql = "SELECT res_id, name, address FROM restaurants";
+                using (var cmd = new MySqlCommand(sql, conn))
+                using (var rdr = cmd.ExecuteReader())
                 {
-                    while (reader.Read())
+                    while (rdr.Read())
                     {
-                        restaurants.Add(new Restaurant
+                        list.Add(new Restaurant
                         {
-                            RestaurantId = reader.GetInt32("res_id"),
-                            Name = reader.GetString("name"),
-                            Address = reader.GetString("address")
+                            RestaurantId = rdr.GetInt32("res_id"),
+                            Name = rdr.GetString("name"),
+                            Address = rdr.GetString("address")
                         });
                     }
                 }
-                conn.Close();
             }
-            return restaurants;
+            return list;
         }
 
         private void customer_intf_lb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (isListBoxLoaded && customer_intf_lb.SelectedItem is Restaurant selectedRestaurant)
+            if (!isListBoxLoaded) return;          
+
+            if (customer_intf_lb.SelectedItem is Restaurant r)
             {
-                RestaurantPage page = new RestaurantPage(selectedRestaurant);
-                page.Show();
+                new RestaurantPage(r, _userId).Show();
+                Close();
             }
         }
 
@@ -95,16 +100,14 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void profile_btn_Click(object sender, EventArgs e)
         {
-            CustomerProfile customerProfile = new CustomerProfile(_userId);
-            customerProfile.Show();
-            this.Close();
+            new CustomerProfile(_userId).Show();
+            Close();
         }
 
         private void order_btn_Click(object sender, EventArgs e)
         {
-            cartpage cartPage = new cartpage(_userId);
-            cartPage.Show();
-            this.Close();
+            new cartpage(_userId).Show();
+            Close();
         }
     }
 }

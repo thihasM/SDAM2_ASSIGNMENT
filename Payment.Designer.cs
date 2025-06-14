@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cash_radio_btn = new RadioButton();
+            radioCash = new RadioButton();
             card_radio_btn = new RadioButton();
             card_name_txt = new Label();
             card_number_txt = new Label();
@@ -47,18 +47,19 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // cash_radio_btn
+            // radioCash
             // 
-            cash_radio_btn.AutoSize = true;
-            cash_radio_btn.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            cash_radio_btn.Location = new Point(75, 136);
-            cash_radio_btn.Margin = new Padding(4, 3, 4, 3);
-            cash_radio_btn.Name = "cash_radio_btn";
-            cash_radio_btn.Size = new Size(73, 27);
-            cash_radio_btn.TabIndex = 0;
-            cash_radio_btn.TabStop = true;
-            cash_radio_btn.Text = "Cash";
-            cash_radio_btn.UseVisualStyleBackColor = true;
+            radioCash.AutoSize = true;
+            radioCash.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            radioCash.Location = new Point(75, 136);
+            radioCash.Margin = new Padding(4, 3, 4, 3);
+            radioCash.Name = "radioCash";
+            radioCash.Size = new Size(73, 27);
+            radioCash.TabIndex = 0;
+            radioCash.TabStop = true;
+            radioCash.Text = "Cash";
+            radioCash.UseVisualStyleBackColor = true;
+            radioCash.CheckedChanged += cash_radio_btn_CheckedChanged;
             // 
             // card_radio_btn
             // 
@@ -243,7 +244,7 @@
             Controls.Add(card_number_txt);
             Controls.Add(card_name_txt);
             Controls.Add(card_radio_btn);
-            Controls.Add(cash_radio_btn);
+            Controls.Add(radioCash);
             Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             Margin = new Padding(4, 3, 4, 3);
             Name = "Payment";
@@ -256,7 +257,7 @@
 
         #endregion
 
-        private RadioButton cash_radio_btn;
+        private RadioButton radioCash;
         private RadioButton card_radio_btn;
         private Label card_name_txt;
         private Label card_number_txt;

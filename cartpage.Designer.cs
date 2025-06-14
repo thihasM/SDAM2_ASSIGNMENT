@@ -38,6 +38,8 @@
             del_loc_tb = new TextBox();
             user_back_btn = new Button();
             payment_btn = new Button();
+            label3 = new Label();
+            lblTotal = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -149,12 +151,32 @@
             payment_btn.UseVisualStyleBackColor = false;
             payment_btn.Click += payment_btn_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(658, 178);
+            label3.Name = "label3";
+            label3.Size = new Size(94, 20);
+            label3.TabIndex = 50;
+            label3.Text = "Your total is :";
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new Point(658, 219);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(44, 20);
+            lblTotal.TabIndex = 51;
+            lblTotal.Text = "total ";
+            // 
             // cartpage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblTotal);
+            Controls.Add(label3);
             Controls.Add(payment_btn);
             Controls.Add(user_back_btn);
             Controls.Add(del_loc_tb);
@@ -185,5 +207,7 @@
         private TextBox del_loc_tb;
         private Button user_back_btn;
         private Button payment_btn;
+        private Label label3;
+        private Label lblTotal;
     }
 }
