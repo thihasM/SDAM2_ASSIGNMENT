@@ -40,6 +40,7 @@
             panel1 = new Panel();
             order_pb = new ProgressBar();
             label1 = new Label();
+            lblWelcome = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -163,12 +164,22 @@
             label1.TabIndex = 41;
             label1.Text = "Order Progress : ";
             // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Location = new Point(20, 61);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(50, 20);
+            lblWelcome.TabIndex = 42;
+            lblWelcome.Text = "label3";
+            // 
             // trackoder
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(797, 571);
+            Controls.Add(lblWelcome);
             Controls.Add(label1);
             Controls.Add(order_pb);
             Controls.Add(panel1);
@@ -202,5 +213,6 @@
         private Panel panel1;
         private ProgressBar order_pb;
         private Label label1;
+        private Label lblWelcome;
     }
 }

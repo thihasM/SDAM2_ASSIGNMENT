@@ -44,6 +44,8 @@
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
             order_st_txt = new Label();
+            label2 = new Label();
+            lblWelcome = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -223,12 +225,33 @@
             order_st_txt.TabIndex = 41;
             order_st_txt.Text = "Payment Page";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(0, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(60, 23);
+            label2.TabIndex = 42;
+            label2.Text = "label2";
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Location = new Point(616, 420);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(60, 23);
+            lblWelcome.TabIndex = 43;
+            lblWelcome.Text = "label3";
+            lblWelcome.Click += label3_Click_1;
+            // 
             // Payment
             // 
             AutoScaleDimensions = new SizeF(12F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblWelcome);
+            Controls.Add(label2);
             Controls.Add(order_st_txt);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
@@ -273,5 +296,7 @@
         private PictureBox pictureBox1;
         private Panel panel1;
         private Label order_st_txt;
+        private Label label2;
+        private Label lblWelcome;
     }
 }

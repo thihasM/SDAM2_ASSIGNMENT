@@ -34,6 +34,15 @@ namespace LOGIN_SDAM_ASSIGNMENT
         private void Payment_Load(object sender, EventArgs e)
         {
 
+
+            if (_orderId != null)
+            {
+                lblWelcome.Text = $"Order Name: {_orderId}!";
+            }
+            else
+            {
+                lblWelcome.Text = "Welcome!";
+            }
         }
 
         private void placeorder_btn_Click(object sender, EventArgs e)
@@ -93,6 +102,11 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 expdate_tb.Enabled = true;
                 cvc_tb.Enabled = true;
             }
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -22,16 +22,13 @@ namespace LOGIN_SDAM_ASSIGNMENT
         }
         private void LoadRestaurantData()
         {
-            // Use _userId to load the specific restaurant's data
-            // Example:
             using (var db = new DatabaseHelper())
             {
                 var restaurant = db.GetRestaurantByUserId(_userId);
                 if (restaurant != null)
                 {
-                    // Populate your form controls
+                    
                     lblRestaurantName.Text = restaurant.Name;
-                    // ... etc ...
                 }
             }
         }

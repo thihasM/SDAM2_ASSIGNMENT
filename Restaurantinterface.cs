@@ -37,19 +37,19 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
                     var restaurant = db.GetRestaurantByUserId(_userId);
 
-                    if (restaurant != null)
-                    {;
+                        if (restaurant != null)
+                        {;
 
-                        lblRestaurantName.Text = restaurant.Name;
+                            lblRestaurantName.Text = restaurant.Name;
 
-                        lblRestaurantName.Refresh();
-                        //Application.DoEvents();
-                    }
-                    else
-                    {
-                        Console.WriteLine("No restaurant found for this user");
-                        lblRestaurantName.Text = "Restaurant not found";
-                    }
+                            lblRestaurantName.Refresh();
+                            //Application.DoEvents();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No restaurant found for this user");
+                            lblRestaurantName.Text = "Restaurant not found";
+                        }
                 }
             }
             catch (Exception ex)

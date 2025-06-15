@@ -103,6 +103,31 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
             Dispose(false);
         }
+        public Customer? GetCustomerByUserId(int userId)
+        {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT cus_id, user_id, name FROM consumers WHERE user_id = @user_id";
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Customer
+                            {
+                                CustomerId = reader.GetInt32("cus_id"),
+                                UserId = reader.GetInt32("user_id"),
+                                Name = reader.GetString("name")
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
     }
 
 }

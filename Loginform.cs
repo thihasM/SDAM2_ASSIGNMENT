@@ -73,8 +73,20 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 }
                 else
                 {
-                    Customerinterface customerInterface = new Customerinterface();
-                    customerInterface.Show();
+                    var customer = GetCustomerByUserId(authenticatedUser.UserId);
+                    if (customer != null)
+                    {
+                        UserManager.SetCurrentCustomer(customer);
+
+                        Customerinterface customerInterface = new Customerinterface();
+                        customerInterface.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Customer profile not found.");
+                        return;
+                    }
+
                 }
                 this.Hide();
             }
@@ -175,6 +187,43 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 MessageBox.Show($"Error fetching restaurant: {ex.Message}");
                 return null;
             }
+        }
+        private Customer GetCustomerByUserId(int userId)
+        {
+            try
+            {
+                using (var db = new DatabaseHelper())
+                using (var conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    string query = @"SELECT cus_id, user_id, name FROM consumers WHERE user_id = @user_id";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@user_id", userId);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return new Customer
+                                {
+                                    CustomerId = reader.GetInt32("cus_id"),
+                                    UserId = reader.GetInt32("user_id"),
+                                    Name = reader.GetString("name")
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching customer: {ex.Message}");
+            }
+
+            return null;
         }
     }
 }

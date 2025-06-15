@@ -23,6 +23,15 @@ namespace LOGIN_SDAM_ASSIGNMENT
         private void cartpage_Load(object sender, EventArgs e)
         {
             RefreshCartDisplay();
+            var currentUser = UserManager.GetCurrentUser();
+            if (currentUser != null)
+            {
+                lblWelcome.Text = $"{currentUser.Username}!";
+            }
+            else
+            {
+                lblWelcome.Text = "Welcome!";
+            }
         }
         private void RefreshCartDisplay()
         {
@@ -35,6 +44,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void payment_btn_Click(object sender, EventArgs e)
         {
+
             string location = del_loc_tb.Text.Trim();
             if (string.IsNullOrWhiteSpace(location))
             {
@@ -42,13 +52,32 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 return;
             }
 
-            int customerId = UserManager.GetCurrentCustomerId(); 
-            int orderId = CartServices.SaveCartToDatabase(customerId, location);
+            int customerId = UserManager.GetCurrentCustomerId();
+            if (Cart.Items.Count == 0)
+            {
+                MessageBox.Show("Your cart is empty. Add items before placing an order.");
+                return;
+            }
 
-            // Pass orderId to payment form
-            Payment paymentForm = new Payment(orderId);
-            paymentForm.Show();
-            this.Close();
+            if (customerId <= 0)
+            {
+                MessageBox.Show("Invalid customer. Please log in again.");
+                return;
+            }
+            try
+            {
+                int orderId = CartServices.PlaceOrder(customerId, location);
+                MessageBox.Show("Order placed successfully!");
+
+                Payment paymentForm = new Payment(orderId);
+                paymentForm.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to place order: " + ex.Message);
+            }
+
         }
 
         private void user_back_btn_Click(object sender, EventArgs e)

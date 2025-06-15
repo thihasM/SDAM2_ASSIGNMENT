@@ -34,6 +34,7 @@
             order_btn = new Button();
             profile_btn = new Button();
             pictureBox1 = new PictureBox();
+            lblWelcome = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -107,12 +108,22 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Location = new Point(12, 12);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(50, 20);
+            lblWelcome.TabIndex = 36;
+            lblWelcome.Text = "label1";
+            // 
             // Customerinterface
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblWelcome);
             Controls.Add(pictureBox1);
             Controls.Add(profile_btn);
             Controls.Add(order_btn);
@@ -135,5 +146,6 @@
         private Button order_btn;
         private Button profile_btn;
         private PictureBox pictureBox1;
+        private Label lblWelcome;
     }
 }

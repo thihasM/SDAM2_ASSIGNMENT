@@ -49,6 +49,16 @@ namespace LOGIN_SDAM_ASSIGNMENT
             customer_intf_lb.DisplayMember = "Name";
 
             isListBoxLoaded = true;
+
+            var currentUser = UserManager.GetCurrentUser();
+            if (currentUser != null)
+            {
+                lblWelcome.Text = $"Welcome, {currentUser.Username}!";
+            }
+            else
+            {
+                lblWelcome.Text = "Welcome!";
+            }
         }
         private List<Restaurant> GetAllRestaurants()
         {

@@ -13,6 +13,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
     public partial class trackoder : Form
     {
         private int _userId;
+        private int? _orderId;
         public trackoder(int userId)
         {
             InitializeComponent();
@@ -31,7 +32,14 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void trackoder_Load(object sender, EventArgs e)
         {
-
+            if (_orderId != null)
+            {
+                lblWelcome.Text = $"Order Number: {_orderId}!";
+            }
+            else
+            {
+                lblWelcome.Text = "Welcome!";
+            }
         }
 
         private void Back_btn_Click(object sender, EventArgs e)

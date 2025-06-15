@@ -40,6 +40,7 @@
             payment_btn = new Button();
             label3 = new Label();
             lblTotal = new Label();
+            lblWelcome = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -169,12 +170,21 @@
             lblTotal.TabIndex = 51;
             lblTotal.Text = "total ";
             // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Location = new Point(38, 12);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(0, 20);
+            lblWelcome.TabIndex = 52;
+            // 
             // cartpage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblWelcome);
             Controls.Add(lblTotal);
             Controls.Add(label3);
             Controls.Add(payment_btn);
@@ -209,5 +219,6 @@
         private Button payment_btn;
         private Label label3;
         private Label lblTotal;
+        private Label lblWelcome;
     }
 }

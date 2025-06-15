@@ -36,6 +36,7 @@
             cus_profile_btn = new Button();
             pictureBox1 = new PictureBox();
             label4 = new Label();
+            lblWelcome = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -132,12 +133,22 @@
             label4.TabIndex = 11;
             label4.Text = "Handiyen";
             // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Location = new Point(738, 434);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(50, 20);
+            lblWelcome.TabIndex = 12;
+            lblWelcome.Text = "label1";
+            // 
             // RestaurantPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(800, 463);
+            Controls.Add(lblWelcome);
             Controls.Add(label4);
             Controls.Add(pictureBox1);
             Controls.Add(cus_profile_btn);
@@ -164,5 +175,6 @@
         private Button cus_profile_btn;
         private PictureBox pictureBox1;
         private Label label4;
+        private Label lblWelcome;
     }
 }

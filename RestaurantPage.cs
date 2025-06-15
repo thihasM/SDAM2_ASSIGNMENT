@@ -100,6 +100,15 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
             lblName.Text = _restaurant.Name;
             lblAddress.Text = _restaurant.Address;
+            var currentUser = UserManager.GetCurrentUser();
+            if (currentUser != null)
+            {
+                lblWelcome.Text = $"{currentUser.Username}!";
+            }
+            else
+            {
+                lblWelcome.Text = "Welcome!";
+            }
         }
 
         private void gobck_btn_Click(object sender, EventArgs e)
