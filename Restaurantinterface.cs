@@ -93,10 +93,18 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
                     pendingOrders = db.GetPendingOrders();
 
-                    listBoxPendingOrders.DataSource = null;
-                    listBoxPendingOrders.DataSource = pendingOrders;
-                    listBoxPendingOrders.DisplayMember = "Details";
-                    listBoxPendingOrders.ValueMember = "OrderId";
+                    if (pendingOrders != null)
+                    {
+                        listBoxPendingOrders.DataSource = null;
+                        listBoxPendingOrders.DataSource = pendingOrders;
+                        listBoxPendingOrders.DisplayMember = "Details";
+                        listBoxPendingOrders.ValueMember = "OrderId";
+                    }
+                    else
+                    {
+                        listBoxPendingOrders.DataSource = null;
+                        MessageBox.Show("No pending orders found.");
+                    }
                 }
                 catch (Exception ex)
                 {

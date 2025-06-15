@@ -190,18 +190,17 @@ namespace LOGIN_SDAM_ASSIGNMENT
             }
             return restaurants;
         }
-        
+
         public List<Order> GetPendingOrders()
         {
             List<Order> orders = new List<Order>();
 
-            
             using (var conn = GetConnection())
             {
                 conn.Open();
                 string query = @"SELECT order_id, order_date, delivery_location, payment_method, cart_id 
-                     FROM orders 
-                     WHERE status = 'Pending'";
+                         FROM orders 
+                         WHERE status = 'Pending'";
 
                 using (var cmd = new MySqlCommand(query, conn))
                 {
@@ -213,9 +212,13 @@ namespace LOGIN_SDAM_ASSIGNMENT
                             {
                                 OrderId = reader.GetInt32("order_id"),
                                 OrderTime = reader.GetDateTime("order_date"),
-                                DeliveryLocation = reader.GetString("delivery_location"),
-                                PaymentMethod = reader.GetString("payment_method"),
-                                CartId = reader.GetInt32("cart_id"),
+                                DeliveryLocation = reader.IsDBNull(reader.GetOrdinal("delivery_location"))
+                                    ? "Unknown"
+                                    : reader.GetString("delivery_location"),
+                                PaymentMethod = reader.IsDBNull(reader.GetOrdinal("payment_method"))
+                                    ? "Unknown"
+                                    : reader.GetString("payment_method"),
+                                CartId = reader.GetInt32("cart_id")
                             });
                         }
                     }
