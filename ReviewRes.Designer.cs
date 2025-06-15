@@ -131,6 +131,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "ReviewRes";
             Text = "ReviewRes";
+            Load += ReviewRes_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

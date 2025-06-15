@@ -44,7 +44,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 txtOrderId.Text = _order.OrderId.ToString();
                 txtLocation.Text = _order.DeliveryLocation;
                 txtPayment.Text = _order.PaymentMethod;
-                txtOrderTime.Text = _order.OrderTime.ToString("g"); // e.g. 6/15/2025 2:30 PM
+                txtOrderTime.Text = _order.OrderTime.ToString("g");
             }
         }
 
@@ -74,7 +74,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
             for (int i = 0; i <= 100; i += 10)
             {
 
-                await Task.Delay(300); // Sim
+                await Task.Delay(300);
             }
 
             MessageBox.Show($"Order #{_order.OrderId} delivered!\nEstimated Time: {estimateTime:HH:mm}");

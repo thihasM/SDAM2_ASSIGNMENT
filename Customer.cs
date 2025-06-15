@@ -8,8 +8,8 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public class Customer
     {
-        public int CustomerId { get; set; }     // Maps to cus_id (Primary Key)
-        public int UserId { get; set; }         // Maps to user_id (Foreign Key)
+        public int CustomerId { get; set; }     
+        public int UserId { get; set; }         
         public string? Name { get; set; }
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }

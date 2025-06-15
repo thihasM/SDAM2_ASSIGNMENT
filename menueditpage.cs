@@ -206,7 +206,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
             {
                 conn.Open();
 
-                // 1. First verify restaurant exists
+                // First verify restaurant exists
                 string checkQuery = "SELECT COUNT(*) FROM restaurants WHERE res_id = @res_id";
                 using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
                 {
@@ -220,7 +220,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
                     }
                 }
 
-                // 2. Now insert the menu item
+                // Now insert the menu item
                 string insertQuery = @"INSERT INTO restaurant_menu (restaurant_id, item_name, price)
                              VALUES (@restaurant_id, @item_name, @price)";
 

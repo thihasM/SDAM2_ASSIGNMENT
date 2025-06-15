@@ -164,6 +164,7 @@
             Controls.Add(label6);
             Name = "ReviewsCus";
             Text = "ReviewsCus";
+            Load += ReviewsCus_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace LOGIN_SDAM_ASSIGNMENT
 {
-    public partial class ReviewRes: Form
+    public partial class ReviewRes : Form
     {
         public ReviewRes()
         {
             InitializeComponent();
+        }
+
+        private void ReviewRes_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

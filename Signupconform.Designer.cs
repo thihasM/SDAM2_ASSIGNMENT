@@ -271,6 +271,7 @@
             Controls.Add(label1);
             Name = "Signupconform";
             Text = "Signupconform";
+            Load += Signupconform_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

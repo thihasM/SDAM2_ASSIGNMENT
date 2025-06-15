@@ -16,7 +16,6 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         public MySqlConnection GetConnection()
         {
-            // Return new connection each time (better for thread safety)
             return new MySqlConnection(connectionString);
         }
 
@@ -33,7 +32,6 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 {
                     MessageBox.Show("Connection failed: " + ex.Message);
                 }
-                // No need for finally/Close - using statement handles it
             }
         }
 

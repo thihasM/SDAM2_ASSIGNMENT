@@ -104,13 +104,13 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 {
                     try
                     {
-                        // 1. Create cart record
+                        // Create cart record
                         int cartId = CreateCartRecord(conn, transaction, customerId, Cart.CurrentRestaurantId);
 
-                        // 2. Create order record
+                        // Create order record
                         int orderId = CreateOrderRecord(conn, transaction, customerId, cartId, deliveryLocation);
 
-                        // 3. Add all cart items
+                        // Add all cart items
                         AddCartItems(conn, transaction, cartId);
 
                         transaction.Commit();

@@ -94,7 +94,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password", password);
                 cmd.Parameters.AddWithValue("@name", name);
-                cmd.Parameters.AddWithValue("@account_type", accountType); // make sure this is a string
+                cmd.Parameters.AddWithValue("@account_type", accountType); 
                 cmd.ExecuteNonQuery();
 
                 long userId = cmd.LastInsertedId;
@@ -128,7 +128,12 @@ namespace LOGIN_SDAM_ASSIGNMENT
         {
             Signupselector signupselector = new Signupselector();
             signupselector.Show();
-            this.Close();   
+            this.Close();
+        }
+
+        private void Signupconform_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

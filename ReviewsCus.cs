@@ -23,5 +23,10 @@ namespace LOGIN_SDAM_ASSIGNMENT
             customerInterface.Show();
             this.Close();
         }
+
+        private void ReviewsCus_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
