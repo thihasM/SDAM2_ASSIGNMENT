@@ -12,6 +12,8 @@ namespace LOGIN_SDAM_ASSIGNMENT
 {
     public partial class Restaurantinterface : Form
     {
+        private bool _isLoadingOrders = false;
+        private List<Order> pendingOrders;
         private int _userId;
         public Restaurantinterface()
         {
@@ -43,7 +45,6 @@ namespace LOGIN_SDAM_ASSIGNMENT
                             lblRestaurantName.Text = restaurant.Name;
 
                             lblRestaurantName.Refresh();
-                            //Application.DoEvents();
                         }
                         else
                         {
@@ -68,14 +69,45 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (_isLoadingOrders) return;
 
+            if (listBoxPendingOrders.SelectedItem != null)
+            {
+                Order selectedOrder = (Order)listBoxPendingOrders.SelectedItem;
+                new DispatchForm(selectedOrder).ShowDialog();
+                LoadPendingOrders();
+            }
         }
 
         private void Restaurantinterface_Load(object sender, EventArgs e)
         {
-
+            LoadPendingOrders();
         }
+        private void LoadPendingOrders()
+        {
+            using (var db = new DatabaseHelper())
+            {
+                try
+                {
+                    _isLoadingOrders = true;
 
+                    pendingOrders = db.GetPendingOrders();
+
+                    listBoxPendingOrders.DataSource = null;
+                    listBoxPendingOrders.DataSource = pendingOrders;
+                    listBoxPendingOrders.DisplayMember = "Details";
+                    listBoxPendingOrders.ValueMember = "OrderId";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to load orders: " + ex.Message);
+                }
+                finally
+                {
+                    _isLoadingOrders = false;
+                }
+            }
+        }
         private void label2_Click(object sender, EventArgs e)
         {
 

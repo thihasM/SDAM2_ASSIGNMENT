@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             profile_btn = new Button();
-            listBox1 = new ListBox();
+            listBoxPendingOrders = new ListBox();
             pending_orders = new Label();
             edit_menu_btn = new Button();
             label4 = new Label();
@@ -52,15 +52,15 @@
             profile_btn.UseVisualStyleBackColor = false;
             profile_btn.Click += button1_Click;
             // 
-            // listBox1
+            // listBoxPendingOrders
             // 
-            listBox1.BackColor = Color.LightSteelBlue;
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(149, 104);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(533, 284);
-            listBox1.TabIndex = 2;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            listBoxPendingOrders.BackColor = Color.LightSteelBlue;
+            listBoxPendingOrders.FormattingEnabled = true;
+            listBoxPendingOrders.Location = new Point(149, 104);
+            listBoxPendingOrders.Name = "listBoxPendingOrders";
+            listBoxPendingOrders.Size = new Size(533, 284);
+            listBoxPendingOrders.TabIndex = 2;
+            listBoxPendingOrders.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // pending_orders
             // 
@@ -128,7 +128,7 @@
             Controls.Add(label4);
             Controls.Add(edit_menu_btn);
             Controls.Add(pending_orders);
-            Controls.Add(listBox1);
+            Controls.Add(listBoxPendingOrders);
             Controls.Add(profile_btn);
             Name = "Restaurantinterface";
             Text = "Restaurantinterface";
@@ -141,7 +141,7 @@
         #endregion
 
         private Button profile_btn;
-        private ListBox listBox1;
+        private ListBox listBoxPendingOrders;
         private Label handiyen;
         private Label pending_orders;
         private Button edit_menu_btn;

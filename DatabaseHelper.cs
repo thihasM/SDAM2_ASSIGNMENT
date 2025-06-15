@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace LOGIN_SDAM_ASSIGNMENT
 {
@@ -161,6 +162,79 @@ namespace LOGIN_SDAM_ASSIGNMENT
                         MessageBox.Show($"Failed to delete profile: {ex.Message}");
                         return false;
                     }
+                }
+            }
+        }
+        public List<Restaurant> GetAllRestaurants()
+        {
+            List<Restaurant> restaurants = new List<Restaurant>();
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT res_id, name, address FROM restaurants";
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            restaurants.Add(new Restaurant
+                            {
+                                RestaurantId = reader.GetInt32("res_id"),
+                                Name = reader.GetString("name"),
+                                Address = reader.GetString("address")
+                            });
+                        }
+                    }
+                }
+            }
+            return restaurants;
+        }
+        
+        public List<Order> GetPendingOrders()
+        {
+            List<Order> orders = new List<Order>();
+
+            
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                string query = @"SELECT order_id, order_date, delivery_location, payment_method, cart_id 
+                     FROM orders 
+                     WHERE status = 'Pending'";
+
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            orders.Add(new Order
+                            {
+                                OrderId = reader.GetInt32("order_id"),
+                                OrderTime = reader.GetDateTime("order_date"),
+                                DeliveryLocation = reader.GetString("delivery_location"),
+                                PaymentMethod = reader.GetString("payment_method"),
+                                CartId = reader.GetInt32("cart_id"),
+                            });
+                        }
+                    }
+                }
+            }
+
+            return orders;
+        }
+        public void UpdateOrderStatus(int orderId, string newStatus)
+        {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                string query = "UPDATE orders SET status = @status WHERE order_id = @orderId";
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@status", newStatus);
+                    cmd.Parameters.AddWithValue("@orderId", orderId);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
