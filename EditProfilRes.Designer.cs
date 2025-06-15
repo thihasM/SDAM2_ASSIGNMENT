@@ -113,7 +113,7 @@
             // 
             button1.BackColor = Color.Black;
             button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
             button1.Location = new Point(549, 395);
             button1.Name = "button1";

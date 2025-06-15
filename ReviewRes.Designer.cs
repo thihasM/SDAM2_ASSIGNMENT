@@ -61,7 +61,7 @@
             // 
             pictureBox1.BackColor = Color.PowderBlue;
             pictureBox1.Image = Properties.Resources.d;
-            pictureBox1.Location = new Point(682, 20);
+            pictureBox1.Location = new Point(689, 13);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(99, 89);

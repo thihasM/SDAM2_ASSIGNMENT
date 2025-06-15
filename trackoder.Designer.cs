@@ -62,7 +62,7 @@
             // 
             order_dt_lb.BackColor = Color.LightSteelBlue;
             order_dt_lb.FormattingEnabled = true;
-            order_dt_lb.Location = new Point(304, 206);
+            order_dt_lb.Location = new Point(115, 208);
             order_dt_lb.Name = "order_dt_lb";
             order_dt_lb.Size = new Size(197, 124);
             order_dt_lb.TabIndex = 2;
@@ -71,9 +71,9 @@
             // 
             ship_dt_lb.BackColor = Color.LightSteelBlue;
             ship_dt_lb.FormattingEnabled = true;
-            ship_dt_lb.Location = new Point(304, 358);
+            ship_dt_lb.Location = new Point(481, 208);
             ship_dt_lb.Name = "ship_dt_lb";
-            ship_dt_lb.Size = new Size(197, 104);
+            ship_dt_lb.Size = new Size(197, 124);
             ship_dt_lb.TabIndex = 3;
             // 
             // order_st_txt
@@ -91,7 +91,7 @@
             // 
             order_dt_txt.AutoSize = true;
             order_dt_txt.Font = new Font("Times New Roman", 12F);
-            order_dt_txt.Location = new Point(304, 173);
+            order_dt_txt.Location = new Point(115, 183);
             order_dt_txt.Name = "order_dt_txt";
             order_dt_txt.Size = new Size(135, 22);
             order_dt_txt.TabIndex = 5;
@@ -101,7 +101,7 @@
             // 
             ship_txt.AutoSize = true;
             ship_txt.Font = new Font("Times New Roman", 12F);
-            ship_txt.Location = new Point(301, 333);
+            ship_txt.Location = new Point(481, 183);
             ship_txt.Name = "ship_txt";
             ship_txt.Size = new Size(166, 22);
             ship_txt.TabIndex = 6;
@@ -149,7 +149,7 @@
             // 
             // order_pb
             // 
-            order_pb.Location = new Point(304, 519);
+            order_pb.Location = new Point(304, 395);
             order_pb.Name = "order_pb";
             order_pb.Size = new Size(197, 29);
             order_pb.TabIndex = 40;
@@ -158,7 +158,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 12F);
-            label1.Location = new Point(304, 479);
+            label1.Location = new Point(304, 355);
             label1.Name = "label1";
             label1.Size = new Size(147, 22);
             label1.TabIndex = 41;
@@ -178,7 +178,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
-            ClientSize = new Size(797, 571);
+            ClientSize = new Size(800, 449);
             Controls.Add(lblWelcome);
             Controls.Add(label1);
             Controls.Add(order_pb);
