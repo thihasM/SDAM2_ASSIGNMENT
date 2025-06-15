@@ -30,11 +30,9 @@
         {
             lblOrderId = new Label();
             lblOrderTime = new Label();
-            label3 = new Label();
             label4 = new Label();
             txtOrderId = new TextBox();
             txtOrderTime = new TextBox();
-            txtOrderDetails = new TextBox();
             driverslb = new ListBox();
             btnDispatchOrder = new Button();
             txtPayment = new TextBox();
@@ -61,15 +59,6 @@
             lblOrderTime.TabIndex = 1;
             lblOrderTime.Text = "Order Time :";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(191, 214);
-            label3.Name = "label3";
-            label3.Size = new Size(104, 20);
-            label3.TabIndex = 2;
-            label3.Text = "Order Details :";
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -94,16 +83,6 @@
             txtOrderTime.ReadOnly = true;
             txtOrderTime.Size = new Size(125, 27);
             txtOrderTime.TabIndex = 6;
-            // 
-            // txtOrderDetails
-            // 
-            txtOrderDetails.Location = new Point(384, 207);
-            txtOrderDetails.Multiline = true;
-            txtOrderDetails.Name = "txtOrderDetails";
-            txtOrderDetails.ReadOnly = true;
-            txtOrderDetails.Size = new Size(320, 27);
-            txtOrderDetails.TabIndex = 7;
-            txtOrderDetails.TextChanged += txtOrderDetails_TextChanged;
             // 
             // driverslb
             // 
@@ -168,11 +147,9 @@
             Controls.Add(label2);
             Controls.Add(btnDispatchOrder);
             Controls.Add(driverslb);
-            Controls.Add(txtOrderDetails);
             Controls.Add(txtOrderTime);
             Controls.Add(txtOrderId);
             Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(lblOrderTime);
             Controls.Add(lblOrderId);
             Name = "DispatchForm";
@@ -186,11 +163,9 @@
 
         private Label lblOrderId;
         private Label lblOrderTime;
-        private Label label3;
         private Label label4;
         private TextBox txtOrderId;
         private TextBox txtOrderTime;
-        private TextBox txtOrderDetails;
         private ListBox driverslb;
         private Button btnDispatchOrder;
         private TextBox txtPayment;
