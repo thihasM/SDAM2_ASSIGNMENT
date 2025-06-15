@@ -117,6 +117,8 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
                 transaction.Commit();
                 MessageBox.Show("Signup successful! enjoy shoping.");
+                Loginform loginform = new Loginform();
+                loginform.Show();
                 conn.Close();
             }
 

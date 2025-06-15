@@ -128,6 +128,42 @@ namespace LOGIN_SDAM_ASSIGNMENT
             }
             return null;
         }
+        public bool DeleteUser(int userId, string accountType)
+        {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        string roleTable = accountType == "Restaurant" ? "restaurants" : "consumers";
+                        string roleDeleteQuery = $"DELETE FROM {roleTable} WHERE user_id = @userId";
+                        using (var roleCmd = new MySqlCommand(roleDeleteQuery, conn, transaction))
+                        {
+                            roleCmd.Parameters.AddWithValue("@userId", userId);
+                            roleCmd.ExecuteNonQuery();
+                        }
+                        string userDeleteQuery = "DELETE FROM users WHERE id = @userId";
+                        using (var userCmd = new MySqlCommand(userDeleteQuery, conn, transaction))
+                        {
+                            userCmd.Parameters.AddWithValue("@userId", userId);
+                            userCmd.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"Failed to delete profile: {ex.Message}");
+                        return false;
+                    }
+                }
+            }
+        }
     }
 
 }

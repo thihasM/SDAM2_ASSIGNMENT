@@ -65,6 +65,7 @@
             cus_delete_account_btn.TabIndex = 1;
             cus_delete_account_btn.Text = "Delete Account";
             cus_delete_account_btn.UseVisualStyleBackColor = false;
+            cus_delete_account_btn.Click += cus_delete_account_btn_Click;
             // 
             // cus_log_out_btn
             // 
@@ -113,6 +114,7 @@
             cus_pro_go_back_btn.TabIndex = 37;
             cus_pro_go_back_btn.Text = "Go Back";
             cus_pro_go_back_btn.UseVisualStyleBackColor = false;
+            cus_pro_go_back_btn.Click += cus_pro_go_back_btn_Click;
             // 
             // Trck_ord_btn
             // 

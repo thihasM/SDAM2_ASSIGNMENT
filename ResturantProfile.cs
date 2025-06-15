@@ -65,65 +65,30 @@ namespace LOGIN_SDAM_ASSIGNMENT
 
         private void res_delete_account_btn_Click(object sender, EventArgs e)
         {
-            DialogResult confirm = MessageBox.Show(
-                "Are you sure you want to delete your profile? This action cannot be undone.",
-                "Confirm Deletion",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-            if (confirm != DialogResult.Yes)
-                return;
+            var result = MessageBox.Show("Are you sure you want to delete your account? This action cannot be undone.",
+                                 "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            //int userId = loggedInUser.Id; // Replace with your actual user object
-            //string role = loggedInUser.Role; // "restaurant" or "consumer"
-
-            DatabaseHelper db = new DatabaseHelper();
-            using (MySqlConnection conn = new MySqlConnection("your_connection_string"))
+            if (result == DialogResult.Yes)
             {
-                conn.Open();
+                var user = UserManager.GetCurrentUser();
+                if (user == null)
+                {
+                    MessageBox.Show("You are not logged in.");
+                    return;
+                }
 
-                MySqlCommand cmd = conn.CreateCommand();
-                MySqlTransaction transaction = conn.BeginTransaction();
-                cmd.Connection = conn;
-                cmd.Transaction = transaction;
-
-                //try
-                //{
-                //    if (role == "restaurant")
-                //    {
-                //        // Delete from menu first
-                //        cmd.CommandText = "DELETE FROM restaurant_menu WHERE user_id = @user_id";
-                //        cmd.Parameters.AddWithValue("@uid", userId);
-                //        cmd.ExecuteNonQuery();
-
-                //        // Delete from restaurant
-                //        cmd.CommandText = "DELETE FROM restaurant WHERE id = @user_id";
-                //        cmd.ExecuteNonQuery();
-                //    }
-                //    else if (role == "consumer")
-                //    {
-                //        cmd.CommandText = "DELETE FROM consumers WHERE id = @user_id";
-                //        cmd.ExecuteNonQuery();
-                //    }
-
-                //    // Delete from users table
-                //    cmd.CommandText = "DELETE FROM users WHERE id = @user_id";
-                //    cmd.ExecuteNonQuery();
-
-                //    transaction.Commit();
-                //    MessageBox.Show("Your profile has been deleted.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //    // Optionally, return to login form or close app
-                //    Application.Restart(); // or go back to login form
-                //}
-                //catch (Exception ex)
-                //{
-                //    transaction.Rollback();
-                //    MessageBox.Show("Error deleting profile: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                using (var db = new DatabaseHelper())
+                {
+                    bool success = db.DeleteUser(user.UserId, user.AccountType);
+                    if (success)
+                    {
+                        MessageBox.Show("Your account has been deleted.");
+                        UserManager.ClearCurrentUser();
+                        new Handiyen().Show();
+                        this.Close();
+                    }
+                }
             }
-
-
-
         }
 
         private void res_edit_btn_Click(object sender, EventArgs e)

@@ -11,6 +11,7 @@ namespace LOGIN_SDAM_ASSIGNMENT
         private static User? _currentUser;
         private static Customer? _currentCustomer;
         private static int _currentRestaurantId = 0;
+        public static Customer CurrentCustomer { get; set; }
 
         public static void SetCurrentUser(User user)
         {

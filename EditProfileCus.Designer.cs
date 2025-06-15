@@ -31,11 +31,9 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            label5 = new Label();
             user_name_edit_textbox = new TextBox();
             user_phone__number_edit_textbox = new TextBox();
             user_email_edit_textbox = new TextBox();
-            user_address_edit_textbox = new TextBox();
             user_confirm_edit_btn = new Button();
             user_back_btn = new Button();
             label6 = new Label();
@@ -49,7 +47,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(180, 120);
+            label2.Location = new Point(180, 144);
             label2.Name = "label2";
             label2.Size = new Size(56, 22);
             label2.TabIndex = 1;
@@ -59,7 +57,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(180, 191);
+            label3.Location = new Point(180, 215);
             label3.Name = "label3";
             label3.Size = new Size(126, 22);
             label3.TabIndex = 2;
@@ -69,25 +67,15 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(180, 264);
+            label4.Location = new Point(180, 288);
             label4.Name = "label4";
             label4.Size = new Size(57, 22);
             label4.TabIndex = 3;
             label4.Text = "Email";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(180, 336);
-            label5.Name = "label5";
-            label5.Size = new Size(76, 22);
-            label5.TabIndex = 4;
-            label5.Text = "Address";
-            // 
             // user_name_edit_textbox
             // 
-            user_name_edit_textbox.Location = new Point(180, 143);
+            user_name_edit_textbox.Location = new Point(180, 167);
             user_name_edit_textbox.Name = "user_name_edit_textbox";
             user_name_edit_textbox.PlaceholderText = "Enter Your Name";
             user_name_edit_textbox.Size = new Size(420, 27);
@@ -95,7 +83,7 @@
             // 
             // user_phone__number_edit_textbox
             // 
-            user_phone__number_edit_textbox.Location = new Point(180, 214);
+            user_phone__number_edit_textbox.Location = new Point(180, 238);
             user_phone__number_edit_textbox.Name = "user_phone__number_edit_textbox";
             user_phone__number_edit_textbox.PlaceholderText = "Enter Your Phone Number";
             user_phone__number_edit_textbox.Size = new Size(420, 27);
@@ -103,19 +91,11 @@
             // 
             // user_email_edit_textbox
             // 
-            user_email_edit_textbox.Location = new Point(180, 287);
+            user_email_edit_textbox.Location = new Point(180, 311);
             user_email_edit_textbox.Name = "user_email_edit_textbox";
             user_email_edit_textbox.PlaceholderText = "Enter Your Email Address";
             user_email_edit_textbox.Size = new Size(420, 27);
             user_email_edit_textbox.TabIndex = 8;
-            // 
-            // user_address_edit_textbox
-            // 
-            user_address_edit_textbox.Location = new Point(180, 359);
-            user_address_edit_textbox.Name = "user_address_edit_textbox";
-            user_address_edit_textbox.PlaceholderText = "Enter Your Address";
-            user_address_edit_textbox.Size = new Size(420, 27);
-            user_address_edit_textbox.TabIndex = 9;
             // 
             // user_confirm_edit_btn
             // 
@@ -129,6 +109,7 @@
             user_confirm_edit_btn.TabIndex = 11;
             user_confirm_edit_btn.Text = "Confirm";
             user_confirm_edit_btn.UseVisualStyleBackColor = false;
+            user_confirm_edit_btn.Click += user_confirm_edit_btn_Click;
             // 
             // user_back_btn
             // 
@@ -198,11 +179,9 @@
             Controls.Add(label6);
             Controls.Add(user_back_btn);
             Controls.Add(user_confirm_edit_btn);
-            Controls.Add(user_address_edit_textbox);
             Controls.Add(user_email_edit_textbox);
             Controls.Add(user_phone__number_edit_textbox);
             Controls.Add(user_name_edit_textbox);
-            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -218,11 +197,9 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private Label label5;
         private TextBox user_name_edit_textbox;
         private TextBox user_phone__number_edit_textbox;
         private TextBox user_email_edit_textbox;
-        private TextBox user_address_edit_textbox;
         private Button user_confirm_edit_btn;
         private Button user_back_btn;
         private Label label6;
